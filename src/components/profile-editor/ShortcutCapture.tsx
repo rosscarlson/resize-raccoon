@@ -1,0 +1,112 @@
+import { useEffect, useState } from 'react';
+import { X } from 'react-feather';
+
+interface Props {
+    value: string;
+    onChange: (shortcut: string) => void;
+}
+
+const MODIFIER_KEYS = new Set(['Control', 'Alt', 'Shift', 'Meta']);
+
+const KEY_MAP: Record<string, string> = {
+    ' ': 'Space',
+    'ArrowLeft': 'Left',
+    'ArrowRight': 'Right',
+    'ArrowUp': 'Up',
+    'ArrowDown': 'Down',
+    'Escape': 'Escape',
+    'Enter': 'Return',
+    'Tab': 'Tab',
+    'Backspace': 'Backspace',
+    'Delete': 'Delete',
+    'Home': 'Home',
+    'End': 'End',
+    'PageUp': 'PageUp',
+    'PageDown': 'PageDown',
+    'Insert': 'Insert',
+};
+
+function buildShortcut(e: KeyboardEvent): string | null {
+    if (MODIFIER_KEYS.has(e.key)) return null;
+
+    const parts: string[] = [];
+    if (e.ctrlKey) parts.push('Ctrl');
+    if (e.altKey) parts.push('Alt');
+    if (e.shiftKey) parts.push('Shift');
+
+    // Must have at least one modifier to avoid accidental captures
+    if (parts.length === 0) return null;
+
+    const key = KEY_MAP[e.key] ?? (e.key.length === 1 ? e.key.toUpperCase() : e.key);
+    parts.push(key);
+
+    return parts.join('+');
+}
+
+const ShortcutCapture = ({ value, onChange }: Props) => {
+    const [listening, setListening] = useState(false);
+
+    useEffect(() => {
+        if (!listening) return;
+
+        const onKeyDown = (e: KeyboardEvent) => {
+            e.preventDefault();
+            e.stopPropagation();
+            if (e.key === 'Escape') {
+                setListening(false);
+                return;
+            }
+            const shortcut = buildShortcut(e);
+            if (shortcut) {
+                onChange(shortcut);
+                setListening(false);
+            }
+        };
+
+        const onMouseDown = (e: MouseEvent) => {
+            const target = e.target as Element;
+            if (!target.closest('[data-shortcut-capture]')) {
+                setListening(false);
+            }
+        };
+
+        document.addEventListener('keydown', onKeyDown, true);
+        document.addEventListener('mousedown', onMouseDown);
+        return () => {
+            document.removeEventListener('keydown', onKeyDown, true);
+            document.removeEventListener('mousedown', onMouseDown);
+        };
+    }, [listening, onChange]);
+
+    return (
+        <div className="flex gap-2" data-shortcut-capture>
+            <div
+                className={`input w-full flex items-center cursor-pointer select-none ${
+                    listening ? 'input-accent' : ''
+                }`}
+                onClick={() => setListening(true)}
+                data-shortcut-capture
+            >
+                {listening ? (
+                    <span className="opacity-60 text-sm">Press a key combo... (Esc to cancel)</span>
+                ) : value ? (
+                    <span className="font-mono text-sm tracking-wide">{value}</span>
+                ) : (
+                    <span className="opacity-40 text-sm">Click to set shortcut</span>
+                )}
+            </div>
+            {value && !listening && (
+                <button
+                    className="btn btn-ghost btn-sm btn-square shrink-0"
+                    onClick={(e) => { e.stopPropagation(); onChange(''); }}
+                    title="Clear shortcut"
+                    data-shortcut-capture
+                >
+                    <X size={14} />
+                </button>
+            )}
+        </div>
+    );
+};
+
+export default ShortcutCapture;

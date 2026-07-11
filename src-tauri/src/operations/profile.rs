@@ -22,6 +22,7 @@ pub struct Profile {
     pub window_pos_y: i32,
     pub window_pos_x: i32,
     pub remove_borders: bool,
+    pub shortcut: Option<String>,
 }
 
 impl Default for Profile {
@@ -37,6 +38,7 @@ impl Default for Profile {
             window_pos_y: 0,
             window_pos_x: 0,
             remove_borders: false,
+            shortcut: None,
         }
     }
 }

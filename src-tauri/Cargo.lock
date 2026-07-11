@@ -3025,7 +3025,7 @@ dependencies = [
 
 [[package]]
 name = "resize-rabbit"
-version = "0.2.0"
+version = "0.3.0"
 dependencies = [
  "auto-launch",
  "base64 0.21.5",

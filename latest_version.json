@@ -1,11 +1,11 @@
 {
-  "version": "0.2.0",
-  "notes": "Auto-updater enabled. If you're on v0.1.0 you'll see this prompt.",
+  "version": "0.3.0",
+  "notes": "Single instance enforcement, global profile shortcuts, shortcut display in tray menu.",
   "pub_date": "2026-07-11T00:00:00Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRaTA2bWpwbWlqM0Vsb3V5YzZ3Q21LQisyME84SFV2cXNSQ3FVT1BoQUlvbU4zK3lzTWh4eFNJK2NyOTBzK2RicGlJKzF5b0lUQ0t4ZjB4OVZHWXFhNGRyZHExUFRKR2dnPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzgzODA0NzQwCWZpbGU6UmVzaXplIFJhYmJpdF8wLjIuMF94NjRfZW4tVVMubXNpLnppcApaWXg0eG9oa01SOFdBMlJPcjZFbncrK283T29sUTVtblZSelhCc0xYY003NWZOa2pFdkpuSUxNMWk1eHJySlBvZkFyY0tieGdLTGJxaXkzRityekNCUT09Cg==",
-      "url": "https://github.com/rosscarlson/resize-rabbit/releases/download/v0.2.0/Resize.Rabbit_0.2.0_x64_en-US.msi.zip"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRaTA2bWpwbWlqM0NPeDBHK3ZrcGNpTmFsVUFtaTJFazQxbmJLQUFiU3VBWVhhdklvUXRjdDNIeUxuT3RUU3BXVlEwcHRkYWllMktIVytUeEpCWVplSk9zckpFVXJUTUFvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzgzODA1NTg3CWZpbGU6UmVzaXplIFJhYmJpdF8wLjMuMF94NjRfZW4tVVMubXNpLnppcAo2TnJxME0yQlJmbEt4MjkrbkM2ZE01anBOWVUxTXJXd09YcnlXVEp4QWlvSGpXdm16K1crWDQwSnJTWjgrN0xUU0I2RzlmWUVjTlk2WDg0WHpneXZDZz09Cg==",
+      "url": "https://github.com/rosscarlson/resize-rabbit/releases/download/v0.3.0/Resize.Rabbit_0.3.0_x64_en-US.msi.zip"
     }
   }
 }

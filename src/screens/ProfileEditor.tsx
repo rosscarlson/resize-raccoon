@@ -8,6 +8,7 @@ import { setScreen } from '../state/screenState';
 import { Screen } from '../types/ScreenTypes';
 import { refreshProfiles, removeProfile } from '../state/profileState';
 import FormControl from '../components/profile-editor/FormControl';
+import ShortcutCapture from '../components/profile-editor/ShortcutCapture';
 import { useTranslation } from '../utils/i18n/useTranslation';
 import ProcessSelector from '../components/profile-editor/ProcessSelector';
 import ProfileEditorHeader from '../components/profile-editor/ProfileEditorHeader';
@@ -41,6 +42,7 @@ const ProfileEditor = ({ profile }: Props) => {
         profile?.removeBorders || false
     );
     const [delay, setDelay] = useState<string>(String(profile?.delay) || '');
+    const [shortcut, setShortcut] = useState<string>(profile?.shortcut || '');
     const uuid = useMemo(() => {
         if (profile) {
             return profile.uuid;
@@ -60,6 +62,7 @@ const ProfileEditor = ({ profile }: Props) => {
         delay: Number(delay) || 0,
         auto: autoResize,
         removeBorders,
+        shortcut: shortcut || undefined,
     });
 
     const handleCancel = () => {
@@ -193,6 +196,14 @@ const ProfileEditor = ({ profile }: Props) => {
                                 />
                             </FormControl>
                         </div>
+                        <FormControl
+                            id="shortcut"
+                            label="Shortcut Key"
+                            description="Global hotkey to apply this profile even when the app is minimized. Must include at least one modifier (Ctrl, Alt, Shift)."
+                            tooltip="top-right"
+                        >
+                            <ShortcutCapture value={shortcut} onChange={setShortcut} />
+                        </FormControl>
                     </div>
                     <div>
                         <FormControl

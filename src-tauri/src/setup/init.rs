@@ -11,6 +11,7 @@ use crate::operations::{
     user_settings::{self, UserSettings},
 };
 use crate::setup::ipc;
+use crate::setup::shortcuts;
 use crate::setup::state::AppState;
 use crate::setup::tray;
 use tauri::{Builder, Manager, Runtime};
@@ -46,6 +47,9 @@ pub fn setup<R: Runtime>(builder: Builder<R>) -> Builder<R> {
         let initial_profiles = profiles.lock().unwrap().clone();
         let _ = app.tray_handle().set_menu(tray::build_tray_menu(&initial_profiles));
 
+        // Register global shortcuts for profiles that have them
+        shortcuts::rebuild_shortcuts(&app_handle);
+
         let profiles_clone = profiles.clone();
 
         thread::Builder::new().name("Process watcher".to_string()).spawn(move || {
@@ -53,9 +57,10 @@ pub fn setup<R: Runtime>(builder: Builder<R>) -> Builder<R> {
         }).unwrap();
 
         let profiles_clone = profiles.clone();
+        let ipc_handle = app_handle.clone();
 
         thread::Builder::new().name("IPC Listener".to_string()).spawn(move || {
-            ipc::listener(profiles_clone);
+            ipc::listener(profiles_clone, ipc_handle);
         }).unwrap();
 
         // Check if we should minimize to sys tray

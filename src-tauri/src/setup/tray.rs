@@ -14,12 +14,18 @@ pub fn build_tray_menu(profiles: &[Profile]) -> SystemTrayMenu {
         .add_native_item(SystemTrayMenuItem::Separator);
 
     for profile in profiles {
-        let submenu = SystemTraySubmenu::new(
-            &profile.name,
-            SystemTrayMenu::new()
-                .add_item(CustomMenuItem::new(format!("apply-{}", profile.uuid), "Apply")),
-        );
-        menu = menu.add_submenu(submenu);
+        let mut submenu_menu = SystemTrayMenu::new()
+            .add_item(CustomMenuItem::new(format!("apply-{}", profile.uuid), "Apply"));
+
+        if let Some(s) = &profile.shortcut {
+            if !s.is_empty() {
+                submenu_menu = submenu_menu.add_item(
+                    CustomMenuItem::new(format!("shortcut-{}", profile.uuid), s).disabled(),
+                );
+            }
+        }
+
+        menu = menu.add_submenu(SystemTraySubmenu::new(&profile.name, submenu_menu));
     }
 
     menu.add_native_item(SystemTrayMenuItem::Separator)

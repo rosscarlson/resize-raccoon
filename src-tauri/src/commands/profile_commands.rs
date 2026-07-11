@@ -2,6 +2,7 @@ use crate::errors::profile::Error as ProfileError;
 use crate::errors::window_manager::Error as WindowManagerError;
 use crate::operations::window_manager::ApplyConfig;
 use crate::profile::{self, Profile};
+use crate::setup::shortcuts;
 use crate::setup::tray;
 use crate::window_manager;
 use tauri::{AppHandle, Runtime};
@@ -31,6 +32,7 @@ pub fn profile_add<R: Runtime>(
 ) -> Result<(), ProfileError> {
     let result = profile::add_profile(profile, &app_handle);
     tray::rebuild_tray_menu(&app_handle);
+    shortcuts::rebuild_shortcuts(&app_handle);
     result
 }
 
@@ -41,6 +43,7 @@ pub fn profile_update<R: Runtime>(
 ) -> Result<(), ProfileError> {
     let result = profile::update_profile(profile, &app_handle);
     tray::rebuild_tray_menu(&app_handle);
+    shortcuts::rebuild_shortcuts(&app_handle);
     result
 }
 
@@ -51,6 +54,7 @@ pub fn profile_delete<R: Runtime>(
 ) -> Result<(), ProfileError> {
     let result = profile::delete_profile(profile, &app_handle);
     tray::rebuild_tray_menu(&app_handle);
+    shortcuts::rebuild_shortcuts(&app_handle);
     result
 }
 
@@ -60,6 +64,7 @@ pub fn profile_import_legacy<R: Runtime>(
 ) -> Result<usize, ProfileError> {
     let result = profile::import_legacy_profiles(&app_handle);
     tray::rebuild_tray_menu(&app_handle);
+    shortcuts::rebuild_shortcuts(&app_handle);
     result
 }
 
@@ -70,5 +75,6 @@ pub fn profile_reorder<R: Runtime>(
 ) -> Result<(), ProfileError> {
     let result = profile::reorder_profiles(uuids, &app_handle);
     tray::rebuild_tray_menu(&app_handle);
+    shortcuts::rebuild_shortcuts(&app_handle);
     result
 }

@@ -9,4 +9,5 @@ export interface Profile {
     windowPosY: number;
     windowPosX: number;
     removeBorders: boolean;
+    shortcut?: string;
 }
