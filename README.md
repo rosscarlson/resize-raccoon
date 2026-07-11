@@ -28,7 +28,7 @@ Based on [Resize Raccoon](https://github.com/mistenkt/resize-raccoon) by mistenk
 
 ## Installation
 
-Download the latest `.msi` from [Releases](https://github.com/rosscarlson/resize-rabbit/releases).
+Download the latest `.msi` from [Releases](https://github.com/rosscarlson/resize-rabbit/releases). Once installed you can import your exsiting Resize Raccoon profiles and/or change the language from Settings.
 
 ## Triggering profiles from scripts / Stream Deck
 
