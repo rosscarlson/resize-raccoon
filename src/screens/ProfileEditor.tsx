@@ -198,8 +198,8 @@ const ProfileEditor = ({ profile }: Props) => {
                         </div>
                         <FormControl
                             id="shortcut"
-                            label="Shortcut Key"
-                            description="Global hotkey to apply this profile even when the app is minimized. Must include at least one modifier (Ctrl, Alt, Shift)."
+                            label={t('profile.shortcut.title')}
+                            description={t('profile.shortcut.description')}
                             tooltip="top-right"
                         >
                             <ShortcutCapture value={shortcut} onChange={setShortcut} />

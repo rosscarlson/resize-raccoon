@@ -18,6 +18,7 @@ pub struct UserSettings {
     pub launch_on_start: bool,
     pub start_minimized: bool,
     pub close_to_tray: bool,
+    pub language: String,
 }
 
 #[derive(Serialize)]
@@ -28,6 +29,7 @@ pub struct SerializeableUserSettings {
     pub has_prompted_for_launch_on_start: bool,
     pub start_minimized: bool,
     pub close_to_tray: bool,
+    pub language: String,
 }
 
 impl Default for UserSettings {
@@ -40,6 +42,7 @@ impl Default for UserSettings {
             has_prompted_for_launch_on_start: false,
             start_minimized: false,
             close_to_tray: true,
+            language: "en".to_string(),
         }
     }
 }
@@ -53,6 +56,7 @@ impl UserSettings {
             has_prompted_for_launch_on_start: self.has_prompted_for_launch_on_start,
             start_minimized: self.start_minimized,
             close_to_tray: self.close_to_tray,
+            language: self.language.clone(),
         }
     }
 }

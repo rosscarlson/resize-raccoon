@@ -1,11 +1,11 @@
 {
-  "version": "0.3.0",
-  "notes": "Single instance enforcement, global profile shortcuts, shortcut display in tray menu.",
+  "version": "0.4.0",
+  "notes": "Multilingual UI with instant language switching. English and Spanish included. Add more by dropping JSON files into AppData locales folder.",
   "pub_date": "2026-07-11T00:00:00Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRaTA2bWpwbWlqM0NPeDBHK3ZrcGNpTmFsVUFtaTJFazQxbmJLQUFiU3VBWVhhdklvUXRjdDNIeUxuT3RUU3BXVlEwcHRkYWllMktIVytUeEpCWVplSk9zckpFVXJUTUFvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzgzODA1NTg3CWZpbGU6UmVzaXplIFJhYmJpdF8wLjMuMF94NjRfZW4tVVMubXNpLnppcAo2TnJxME0yQlJmbEt4MjkrbkM2ZE01anBOWVUxTXJXd09YcnlXVEp4QWlvSGpXdm16K1crWDQwSnJTWjgrN0xUU0I2RzlmWUVjTlk2WDg0WHpneXZDZz09Cg==",
-      "url": "https://github.com/rosscarlson/resize-rabbit/releases/download/v0.3.0/Resize.Rabbit_0.3.0_x64_en-US.msi.zip"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRaTA2bWpwbWlqM0RQWGk3RUZSandlU3c4Rll6azh2R3R5Snkva1ZneFRBcHJ2ZElZMmxXNGNRODdaSThQM0NvZUw5QzJPY1NSZDB5RllTMWh5cjZlVDV1bU1yZDhCOUFzPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzgzODA2NDc5CWZpbGU6UmVzaXplIFJhYmJpdF8wLjQuMF94NjRfZW4tVVMubXNpLnppcAoxSm1GTERCTGVFQm1Sc3BrUTlqV2VQbkhJcVJwNE44dk5SK29McTVTQ1lMN25RNXBDclQ0VFM2dlFsNUJPTTMwZndQNnorNFp1bFJoeVlXUlpMUnlEZz09Cg==",
+      "url": "https://github.com/rosscarlson/resize-rabbit/releases/download/v0.4.0/Resize.Rabbit_0.4.0_x64_en-US.msi.zip"
     }
   }
 }

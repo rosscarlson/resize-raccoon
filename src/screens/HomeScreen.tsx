@@ -7,6 +7,7 @@ import { getAppVersion } from '../state/appVersionState';
 import { getProfiles, reorderProfiles } from '../state/profileState';
 import { setScreen } from '../state/screenState';
 import { Screen } from '../types/ScreenTypes';
+import { useTranslation } from '../utils/i18n/useTranslation';
 import {
     DndContext,
     closestCenter,
@@ -22,6 +23,7 @@ import {
 } from '@dnd-kit/sortable';
 
 const HomeScreen = () => {
+    const t = useTranslation();
     const [settingsOpen, setSettingsOpen] = useState(false);
     const sensors = useSensors(useSensor(PointerSensor));
 
@@ -83,7 +85,7 @@ const HomeScreen = () => {
                                         target="_blank"
                                         href="https://github.com/rosscarlson/resize-rabbit"
                                     >
-                                        Homepage
+                                        {t('home.homepage')}
                                     </a>
                                 </div>
                             </div>
@@ -96,9 +98,9 @@ const HomeScreen = () => {
                                     <label className="label cursor-pointer justify-end gap-2 items-center p-0">
                                         <span className="label-text">
                                             <span className="badge font-semibold tracking-wide badge-outline badge-xs text-2xs uppercase inline mr-1">
-                                                beta
+                                                {t('home.beta')}
                                             </span>
-                                            Process watcher
+                                            {t('home.processWatcher')}
                                         </span>
                                         <input
                                             type="checkbox"

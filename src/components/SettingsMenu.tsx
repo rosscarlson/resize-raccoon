@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Info, Download } from 'react-feather';
 import { getSettings, updateSettings } from '../state/settingsState';
 import { useTranslation } from '../utils/i18n/useTranslation';
@@ -6,32 +6,47 @@ import backend from '../utils/backend';
 import { refreshProfiles } from '../state/profileState';
 import { addToast } from './toast/ToastSystem';
 import { ToastType } from './toast/toast.types';
+import i18n from '../utils/i18n/i18n';
+
+const LANGUAGE_NAMES: Record<string, string> = {
+    en: 'English',
+    es: 'Español',
+    fr: 'Français',
+    de: 'Deutsch',
+    it: 'Italiano',
+    pt: 'Português',
+    nl: 'Nederlands',
+    pl: 'Polski',
+    ru: 'Русский',
+    zh: '中文',
+    ja: '日本語',
+    ko: '한국어',
+};
 
 const SettingsMenu = () => {
     const t = useTranslation();
     const [processWatcherPollRate, setProcessWatcherPollRate] =
         useState<string>(String(getSettings().pollRate));
+    const [availableLocales, setAvailableLocales] = useState<string[]>(['en']);
+
+    useEffect(() => {
+        backend.locale.list().then(setAvailableLocales).catch(() => {});
+    }, []);
 
     const handlePollRateBlur = async () => {
         if (isNaN(Number(processWatcherPollRate))) {
             setProcessWatcherPollRate(String(getSettings().pollRate));
             return;
         }
-
         if (Number(processWatcherPollRate) === getSettings().pollRate) return;
-
         updateSettings({ pollRate: Number(processWatcherPollRate) });
     };
 
-    const handleCheckForUpdatesToggle = (
-        e: React.ChangeEvent<HTMLInputElement>
-    ) => {
+    const handleCheckForUpdatesToggle = (e: React.ChangeEvent<HTMLInputElement>) => {
         updateSettings({ checkForUpdates: e.target.checked });
     };
 
-    const handleLaunchOnStartToggle = (
-        e: React.ChangeEvent<HTMLInputElement>
-    ) => {
+    const handleLaunchOnStartToggle = (e: React.ChangeEvent<HTMLInputElement>) => {
         updateSettings({ launchOnStart: e.target.checked }, true);
         backend.settings.toggleLaunchOnStart(e.target.checked).catch(() => {
             updateSettings({ launchOnStart: !e.target.checked }, true);
@@ -40,11 +55,24 @@ const SettingsMenu = () => {
 
     const handleStartMinimizedToggle = (e: React.ChangeEvent<HTMLInputElement>) => {
         updateSettings({ startMinimized: e.target.checked });
-    }
+    };
 
     const handleCloseToTrayToggle = (e: React.ChangeEvent<HTMLInputElement>) => {
         updateSettings({ closeToTray: e.target.checked });
-    }
+    };
+
+    const handleLanguageChange = async (e: React.ChangeEvent<HTMLSelectElement>) => {
+        const lang = e.target.value;
+        if (!i18n.hasResourceBundle(lang, 'translation')) {
+            try {
+                const json = await backend.locale.load(lang);
+                const data = JSON.parse(json);
+                i18n.addResourceBundle(lang, 'translation', data, true, true);
+            } catch {}
+        }
+        await i18n.changeLanguage(lang);
+        updateSettings({ language: lang });
+    };
 
     const [importing, setImporting] = useState(false);
     const handleImportLegacy = async () => {
@@ -53,12 +81,12 @@ const SettingsMenu = () => {
             const count: number = await backend.profile.importLegacy();
             if (count > 0) {
                 await refreshProfiles();
-                addToast({ type: ToastType.SUCCESS, message: `Imported ${count} profile(s) from Resize Raccoon.` });
+                addToast({ type: ToastType.SUCCESS, message: t('import.success').replace('{{count}}', String(count)) });
             } else {
-                addToast({ type: ToastType.INFO, message: 'No new profiles found in Resize Raccoon data.' });
+                addToast({ type: ToastType.INFO, message: t('import.none') });
             }
         } catch {
-            addToast({ type: ToastType.ERROR, message: 'Could not find Resize Raccoon data to import.' });
+            addToast({ type: ToastType.ERROR, message: t('import.error') });
         } finally {
             setImporting(false);
         }
@@ -141,7 +169,7 @@ const SettingsMenu = () => {
             <div className="form-control w-full mb-4">
                 <label className="label pb-1">
                     <span className="text-2xs uppercase font-semibold">
-                        Import profiles
+                        {t('import.label')}
                     </span>
                 </label>
                 <button
@@ -153,7 +181,7 @@ const SettingsMenu = () => {
                         ? <span className="loading loading-spinner w-4" />
                         : <Download size={14} />
                     }
-                    Import Resize Raccoon
+                    {t('import.button')}
                 </button>
             </div>
             <div className="divider mt-2 mb-1"></div>
@@ -182,16 +210,36 @@ const SettingsMenu = () => {
                 />
             </div>
             <div className="divider mt-2 mb-1"></div>
+            <div className="form-control w-full mb-4">
+                <label className="label pb-1" htmlFor="language">
+                    <span className="text-2xs uppercase font-semibold">
+                        {t('settings.language.title')}
+                    </span>
+                </label>
+                <select
+                    id="language"
+                    className="select select-bordered w-full"
+                    value={getSettings().language || 'en'}
+                    onChange={handleLanguageChange}
+                >
+                    {availableLocales.map((code) => (
+                        <option key={code} value={code}>
+                            {LANGUAGE_NAMES[code] ?? code.toUpperCase()}
+                        </option>
+                    ))}
+                </select>
+            </div>
+            <div className="divider mt-2 mb-1"></div>
             <div className="mt-auto pt-4 text-center text-2xs opacity-40">
-                <span>Based on </span>
+                {t('attribution', { name: 'Resize Raccoon', author: 'mistenkt' })}
+                {' — '}
                 <a
                     className="link"
                     target="_blank"
                     href="https://github.com/mistenkt/resize-raccoon"
                 >
-                    Resize Raccoon
+                    GitHub
                 </a>
-                <span> by mistenkt</span>
             </div>
         </div>
     );

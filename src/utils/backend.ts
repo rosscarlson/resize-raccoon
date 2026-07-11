@@ -100,10 +100,16 @@ const settings = {
         invokeWithToast('settings_toggle_launch_on_start', { launchOnStart }),
 };
 
+const locale = {
+    list: (): Promise<string[]> => invoke('locale_list'),
+    load: (lang: string): Promise<string> => invoke('locale_load', { lang }),
+};
+
 const backend = {
     profile,
     process,
     settings,
+    locale,
 };
 
 export default backend;

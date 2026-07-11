@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { X } from 'react-feather';
+import { useTranslation } from '../../utils/i18n/useTranslation';
 
 interface Props {
     value: string;
@@ -34,7 +35,6 @@ function buildShortcut(e: KeyboardEvent): string | null {
     if (e.altKey) parts.push('Alt');
     if (e.shiftKey) parts.push('Shift');
 
-    // Must have at least one modifier to avoid accidental captures
     if (parts.length === 0) return null;
 
     const key = KEY_MAP[e.key] ?? (e.key.length === 1 ? e.key.toUpperCase() : e.key);
@@ -44,6 +44,7 @@ function buildShortcut(e: KeyboardEvent): string | null {
 }
 
 const ShortcutCapture = ({ value, onChange }: Props) => {
+    const t = useTranslation();
     const [listening, setListening] = useState(false);
 
     useEffect(() => {
@@ -88,18 +89,18 @@ const ShortcutCapture = ({ value, onChange }: Props) => {
                 data-shortcut-capture
             >
                 {listening ? (
-                    <span className="opacity-60 text-sm">Press a key combo... (Esc to cancel)</span>
+                    <span className="opacity-60 text-sm">{t('profile.shortcut.listening')}</span>
                 ) : value ? (
                     <span className="font-mono text-sm tracking-wide">{value}</span>
                 ) : (
-                    <span className="opacity-40 text-sm">Click to set shortcut</span>
+                    <span className="opacity-40 text-sm">{t('profile.shortcut.placeholder')}</span>
                 )}
             </div>
             {value && !listening && (
                 <button
                     className="btn btn-ghost btn-sm btn-square shrink-0"
                     onClick={(e) => { e.stopPropagation(); onChange(''); }}
-                    title="Clear shortcut"
+                    title={t('profile.shortcut.clear')}
                     data-shortcut-capture
                 >
                     <X size={14} />

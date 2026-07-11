@@ -27,11 +27,11 @@ const en = {
         "window" : {
             "width": {
                 "title": "Window width",
-                "description": "Probably self-explanatory, the intended width of the window. For triple monitor setups this is 3x a single screens horizontal pixels.", 
+                "description": "Probably self-explanatory, the intended width of the window. For triple monitor setups this is 3x a single screens horizontal pixels.",
             },
             "height": {
                 "title": "Window height",
-                "description": "Probably self-explanatory, the intended height of the window. For triple monitor setups this is the height of a single screen.", 
+                "description": "Probably self-explanatory, the intended height of the window. For triple monitor setups this is the height of a single screen.",
             },
             "posY": {
                 "title": "Window position y",
@@ -56,6 +56,13 @@ const en = {
             "title": "Auto resize delay (ms)",
             "description": "The delay in milliseconds between the program launching and the profile being applied.",
         },
+        "shortcut": {
+            "title": "Shortcut Key",
+            "description": "Global hotkey to apply this profile even when the app is minimized. Must include at least one modifier (Ctrl, Alt, Shift).",
+            "placeholder": "Click to set shortcut",
+            "listening": "Press a key combo... (Esc to cancel)",
+            "clear": "Clear shortcut",
+        },
         "buttons": {
             "test": "Test profile",
             "cancel": "Cancel",
@@ -66,14 +73,19 @@ const en = {
     "home": {
         "homepage": "Homepage",
         "processWatcher": "Process watcher",
+        "beta": "beta",
     },
     "import": {
-        "button": "Import from Resize Raccoon",
-        "success": "Imported {count} profile(s) from Resize Raccoon.",
+        "label": "Import profiles",
+        "button": "Import Resize Raccoon",
+        "success": "Imported {{count}} profile(s) from Resize Raccoon.",
         "none": "No new profiles found in Resize Raccoon data.",
         "error": "Could not find Resize Raccoon data to import.",
     },
     "settings": {
+        "language": {
+            "title": "Language",
+        },
         "checkForUpdates": {
             "title": "Check for updates on launch",
         },
@@ -93,6 +105,7 @@ const en = {
             "description": "Close the program to the system tray instead of exiting.",
         }
     },
+    "attribution": "Based on {{name}} by {{author}}",
     "errors": {
         "window_manager": {
             "process_not_found": "Process not found, make sure the application your trying to control is running.",
