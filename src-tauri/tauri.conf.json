@@ -8,7 +8,7 @@
   },
   "package": {
     "productName": "Resize Rabbit",
-    "version": "0.1.0"
+    "version": "0.2.0"
   },
   "tauri": {
     "allowlist": {
@@ -34,7 +34,7 @@
     },
     "bundle": {
       "active": true,
-      "targets": ["msi"],
+      "targets": ["msi", "updater"],
       "identifier": "com.jasbone.resizerabbit",
       "icon": [
         "icons/32x32.png",
@@ -66,7 +66,12 @@
       "iconAsTemplate": true
     },
     "updater": {
-      "active": false
+      "active": true,
+      "dialog": false,
+      "endpoints": [
+        "https://raw.githubusercontent.com/rosscarlson/resize-rabbit/master/latest_version.json"
+      ],
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IERDQTM2OEE2QTNBOUQzMjIKUldRaTA2bWpwbWlqM0tlVndtTTdQcTJJak1xajFGUEhUQXNzdTIrY0lqeStOUmRLaXU2b053Sm8K"
     }
   }
 }
