@@ -86,17 +86,6 @@ const HomeScreen = () => {
                                         Homepage
                                     </a>
                                 </div>
-                                <div className="version-info flex justify-center gap-1 mt-1 opacity-60 normal-case">
-                                    <span>Based on</span>
-                                    <a
-                                        className="link"
-                                        target="_blank"
-                                        href="https://github.com/mistenkt/resize-raccoon"
-                                    >
-                                        Resize Raccoon
-                                    </a>
-                                    <span>by mistenkt</span>
-                                </div>
                             </div>
                             <div className="divider w-20 self-center mt-2 mb-2" />
                             <div className="form-control flex w-full auto-resize-toggle">

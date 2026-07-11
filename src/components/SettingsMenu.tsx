@@ -153,7 +153,7 @@ const SettingsMenu = () => {
                         ? <span className="loading loading-spinner w-4" />
                         : <Download size={14} />
                     }
-                    Import from Resize Raccoon
+                    Import Resize Raccoon
                 </button>
             </div>
             <div className="divider mt-2 mb-1"></div>
@@ -180,6 +180,18 @@ const SettingsMenu = () => {
                     onChange={(e) => setProcessWatcherPollRate(e.target.value)}
                     onBlur={handlePollRateBlur}
                 />
+            </div>
+            <div className="divider mt-2 mb-1"></div>
+            <div className="mt-auto pt-4 text-center text-2xs opacity-40">
+                <span>Based on </span>
+                <a
+                    className="link"
+                    target="_blank"
+                    href="https://github.com/mistenkt/resize-raccoon"
+                >
+                    Resize Raccoon
+                </a>
+                <span> by mistenkt</span>
             </div>
         </div>
     );

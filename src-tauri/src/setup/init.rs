@@ -12,6 +12,7 @@ use crate::operations::{
 };
 use crate::setup::ipc;
 use crate::setup::state::AppState;
+use crate::setup::tray;
 use tauri::{Builder, Manager, Runtime};
 
 pub fn setup<R: Runtime>(builder: Builder<R>) -> Builder<R> {
@@ -40,6 +41,10 @@ pub fn setup<R: Runtime>(builder: Builder<R>) -> Builder<R> {
             poll_rate: poll_rate_flag.clone(),
         };
         app.manage(app_state);
+
+        // Populate tray menu with loaded profiles
+        let initial_profiles = profiles.lock().unwrap().clone();
+        let _ = app.tray_handle().set_menu(tray::build_tray_menu(&initial_profiles));
 
         let profiles_clone = profiles.clone();
 

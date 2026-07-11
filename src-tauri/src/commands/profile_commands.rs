@@ -2,6 +2,7 @@ use crate::errors::profile::Error as ProfileError;
 use crate::errors::window_manager::Error as WindowManagerError;
 use crate::operations::window_manager::ApplyConfig;
 use crate::profile::{self, Profile};
+use crate::setup::tray;
 use crate::window_manager;
 use tauri::{AppHandle, Runtime};
 use uuid::Uuid;
@@ -28,7 +29,9 @@ pub fn profile_add<R: Runtime>(
     profile: Profile,
     app_handle: AppHandle<R>,
 ) -> Result<(), ProfileError> {
-    profile::add_profile(profile, &app_handle)
+    let result = profile::add_profile(profile, &app_handle);
+    tray::rebuild_tray_menu(&app_handle);
+    result
 }
 
 #[tauri::command]
@@ -36,7 +39,9 @@ pub fn profile_update<R: Runtime>(
     profile: Profile,
     app_handle: AppHandle<R>,
 ) -> Result<(), ProfileError> {
-    profile::update_profile(profile, &app_handle)
+    let result = profile::update_profile(profile, &app_handle);
+    tray::rebuild_tray_menu(&app_handle);
+    result
 }
 
 #[tauri::command]
@@ -44,14 +49,18 @@ pub fn profile_delete<R: Runtime>(
     profile: Profile,
     app_handle: AppHandle<R>,
 ) -> Result<(), ProfileError> {
-    profile::delete_profile(profile, &app_handle)
+    let result = profile::delete_profile(profile, &app_handle);
+    tray::rebuild_tray_menu(&app_handle);
+    result
 }
 
 #[tauri::command]
 pub fn profile_import_legacy<R: Runtime>(
     app_handle: AppHandle<R>,
 ) -> Result<usize, ProfileError> {
-    profile::import_legacy_profiles(&app_handle)
+    let result = profile::import_legacy_profiles(&app_handle);
+    tray::rebuild_tray_menu(&app_handle);
+    result
 }
 
 #[tauri::command]
@@ -59,5 +68,7 @@ pub fn profile_reorder<R: Runtime>(
     uuids: Vec<Uuid>,
     app_handle: AppHandle<R>,
 ) -> Result<(), ProfileError> {
-    profile::reorder_profiles(uuids, &app_handle)
+    let result = profile::reorder_profiles(uuids, &app_handle);
+    tray::rebuild_tray_menu(&app_handle);
+    result
 }
