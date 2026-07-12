@@ -10,7 +10,7 @@ Based on [Resize Raccoon](https://github.com/mistenkt/resize-raccoon) by mistenk
 
 ![Resize Rabbit screenshot](docs/screenshot.png)
 
-## Original [Resize Raccoon](https://github.com/mistenkt/resize-raccoon) Features
+## Original Resize Raccoon Features
 
 - Save window size and position profiles per application
 - One-click apply to snap a window to its saved layout
