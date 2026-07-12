@@ -17,10 +17,12 @@ fn seed_if_needed<R: Runtime>(app: &AppHandle<R>) -> Result<std::path::PathBuf, 
     let dir = locales_dir(app)?;
     if !dir.exists() {
         fs::create_dir_all(&dir).map_err(|e| e.to_string())?;
-        for (lang, content) in BUNDLED {
-            fs::write(dir.join(format!("{}.json", lang)), content)
-                .map_err(|e| e.to_string())?;
-        }
+    }
+    // Always overwrite bundled locales so users get the latest translations after updates.
+    // User-added language files are not in BUNDLED and are left untouched.
+    for (lang, content) in BUNDLED {
+        fs::write(dir.join(format!("{}.json", lang)), content)
+            .map_err(|e| e.to_string())?;
     }
     Ok(dir)
 }
