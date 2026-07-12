@@ -3,7 +3,7 @@ name = "resize-rabbit"
 version = "1.0.0"
 description = "Resize Rabbit"
 authors = ["rosscarlson"]
-license = ""
+license = "MIT"
 repository = ""
 edition = "2021"
 

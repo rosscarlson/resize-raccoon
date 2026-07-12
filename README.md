@@ -62,3 +62,7 @@ yarn tauri build
 ```
 
 Requires Node.js, Yarn, Rust (stable-msvc), and Visual Studio Build Tools with the C++ workload.
+
+## License
+
+MIT — see [LICENSE](LICENSE).
