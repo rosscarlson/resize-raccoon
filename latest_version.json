@@ -1,11 +1,11 @@
 {
-  "version": "0.6.0",
-  "notes": "Tray menu now translated with UI language; attribution restored; Import button layout improved.",
-  "pub_date": "2026-07-11T00:00:00Z",
+  "version": "0.6.1",
+  "notes": "Always reseed bundled locales (en/es) on launch so translation updates reach existing installs. User-added language files are left untouched.",
+  "pub_date": "2026-07-12T00:00:00Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRaTA2bWpwbWlqM1BOMDI2eFk1SHVxTEFjSW1ub05kRWluQlh4dm1rM3FWS0VrZjUyYStsTHdnVThiUzZVdmpjQmJJa1h3azl1clJPQWkrZndLdml2Y0U5ZXk2MDU0NFFnPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzgzODA4MTMwCWZpbGU6UmVzaXplIFJhYmJpdF8wLjYuMF94NjRfZW4tVVMubXNpLnppcApVb0l5NmZrZ2N5YWhraXJWaGx2V3ZsOE1QZFBxenRpd1lWT0U4a3dBdGV4ZHhtZG5xTnRYMWtLaU5ZVzBlbGZqYzQycUFBWVBrQkhPNjVTMjlBdUZEdz09Cg==",
-      "url": "https://github.com/rosscarlson/resize-rabbit/releases/download/v0.6.0/Resize.Rabbit_0.6.0_x64_en-US.msi.zip"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRaTA2bWpwbWlqM0NPYTl2Um1XTW5DaVhQaTJNQW9IQUZ5eHVxVWUwaFdEeVB4L3MxaHo0L0FLRTdnU3NaOEJvMzRrUXowSUsxYVFFeWtMbFVKWXdaSzhST3VhWjhVWkFzPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzgzODMyMjgzCWZpbGU6UmVzaXplIFJhYmJpdF8wLjYuMV94NjRfZW4tVVMubXNpLnppcAp4RWt1em5vRlVja1Y0M2RiZGx5VThRRUVQWU1RbFdzNFNMcmNSczBTVkg3NUx6WG9wdGtPcWVoeFJFVnZCemcrQjljR2xRMG5QdlFMeUhuZG9yQ1JBZz09Cg==",
+      "url": "https://github.com/rosscarlson/resize-rabbit/releases/download/v0.6.1/Resize.Rabbit_0.6.1_x64_en-US.msi.zip"
     }
   }
 }
