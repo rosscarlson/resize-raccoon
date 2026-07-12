@@ -10,7 +10,7 @@ Based on [Resize Raccoon](https://github.com/mistenkt/resize-raccoon) by mistenk
 
 ![Resize Rabbit screenshot](docs/screenshot.png)
 
-## Original Features
+## Original Resize Raccoon Features
 
 - Save window size and position profiles per application
 - One-click apply to snap a window to its saved layout
@@ -18,7 +18,7 @@ Based on [Resize Raccoon](https://github.com/mistenkt/resize-raccoon) by mistenk
 - Import profiles from an existing Resize Raccoon installation
 - Launch on startup, minimize to tray
 
-## Added Features
+## New Resize Rabbit Features
 
 - Ability to reorder profiles - drag/drop to reorder them
 - Apply profiles from the System Tray menu
