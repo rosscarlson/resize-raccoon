@@ -1,0 +1,141 @@
+{
+  "toast": {
+    "buttons": {
+      "dismiss": "关闭"
+    }
+  },
+  "profile": {
+    "process": {
+      "title": "进程",
+      "description": "您要为其创建调整大小配置文件的应用程序。如果您在打开此屏幕后启动了程序，请点击刷新按钮。",
+      "select": "选择一个进程"
+    },
+    "profileName": {
+      "title": "配置文件名称",
+      "description": "您要创建的配置文件的名称，将用于在配置文件列表中标识该预设。"
+    },
+    "preset": {
+      "title": "预设",
+      "description": "适用于某些三屏显示器设置的预先计算值。",
+      "select": "从预设复制数值",
+      "options": {
+        "triple1080p": "三屏 1080p",
+        "triple1440p": "三屏 1440p",
+        "triple4k": "三屏 4k"
+      }
+    },
+    "window": {
+      "width": {
+        "title": "窗口宽度",
+        "description": "应该很好理解，即窗口的预期宽度。对于三屏显示器设置，这是单个屏幕水平像素的 3 倍。"
+      },
+      "height": {
+        "title": "窗口高度",
+        "description": "应该很好理解，即窗口的预期高度。对于三屏显示器设置，这是单个屏幕的高度。"
+      },
+      "posY": {
+        "title": "窗口 Y 坐标",
+        "description": "窗口在屏幕上的垂直位置，通常为 0。"
+      },
+      "posX": {
+        "title": "窗口 X 坐标",
+        "description": "窗口在屏幕上的水平位置，取决于您的设置。对于三屏显示器，通常是一个负值，等于单个屏幕的宽度。"
+      },
+      "borderless": {
+        "title": "移除边框",
+        "description": "移除窗口边框。仅当您无法在游戏内选择无边框模式时才使用此选项。"
+      }
+    },
+    "autoResize": {
+      "title": "自动调整大小",
+      "description": "允许在程序启动时自动应用此配置文件（需要全局进程监视）。",
+      "enabled": "自动",
+      "disabled": "手动"
+    },
+    "autoResizeDelay": {
+      "title": "自动调整大小延迟（毫秒）",
+      "description": "程序启动与应用配置文件之间的延迟时间（以毫秒为单位）。"
+    },
+    "shortcut": {
+      "title": "快捷键",
+      "description": "即使应用程序已最小化，也可用于应用此配置文件的全局快捷键。必须至少包含一个修饰键（Ctrl、Alt、Shift）。",
+      "placeholder": "点击设置快捷键",
+      "listening": "请按下组合键...（按 Esc 取消）",
+      "clear": "清除快捷键"
+    },
+    "buttons": {
+      "test": "测试配置文件",
+      "cancel": "取消",
+      "save": "保存",
+      "delete": "删除"
+    }
+  },
+  "home": {
+    "homepage": "主页",
+    "processWatcher": "进程监视",
+    "beta": "测试版"
+  },
+  "import": {
+    "label": "导入 Resize Raccoon 配置文件",
+    "button": "导入",
+    "success": "已从 Resize Raccoon 导入 {{count}} 个配置文件。",
+    "none": "在 Resize Raccoon 数据中未找到新的配置文件。",
+    "error": "找不到要导入的 Resize Raccoon 数据。"
+  },
+  "settings": {
+    "language": {
+      "title": "语言"
+    },
+    "checkForUpdates": {
+      "title": "启动时检查更新"
+    },
+    "processPollRate": {
+      "title": "进程轮询频率（毫秒）",
+      "description": "检查新启动应用程序的频率。"
+    },
+    "launchOnStart": {
+      "title": "开机启动"
+    },
+    "startMinimized": {
+      "title": "启动时最小化",
+      "description": "启动程序时将其最小化到系统托盘。"
+    },
+    "closeToTray": {
+      "title": "关闭到托盘",
+      "description": "关闭程序时将其最小化到系统托盘，而不是退出。"
+    }
+  },
+  "tray": {
+    "show": "显示",
+    "apply": "应用",
+    "checkForUpdates": "检查更新",
+    "exit": "退出",
+    "updateAvailableTitle": "有可用更新",
+    "updateAvailableMsg": "版本 {{version}} 可用。是否立即安装？",
+    "updateErrorTitle": "更新错误",
+    "updateErrorMsg": "安装更新失败：{{error}}",
+    "upToDateTitle": "已是最新版本",
+    "upToDateMsg": "您正在使用最新版本。",
+    "updateCheckFailedTitle": "检查更新失败",
+    "updateCheckFailedMsg": "无法检查更新：{{error}}"
+  },
+  "attribution": "基于 {{author}} 的 {{name}}",
+  "errors": {
+    "window_manager": {
+      "process_not_found": "未找到进程，请确保您要控制的应用程序正在运行。",
+      "apply_failed": "应用配置文件失败，原因不明。是否重试？",
+      "access_deined": "应用配置文件失败，访问被拒绝。请尝试以管理员身份运行 Resize Rabbit。",
+      "invalid_pid": "应用配置文件失败，进程 ID 无效。您永远不会看到此错误。如果看到了，那您中奖了。"
+    },
+    "profile": {
+      "not_found": "未找到配置文件，请重启程序以同步配置文件。",
+      "profile_path_error": "无法定位配置文件路径，这不太妙，但不应该发生。总之请不要删除应用程序数据文件夹。"
+    },
+    "settings": {
+      "launch_on_start_error": "无法切换开机启动设置",
+      "unable_to_fetch_app_data": "无法获取应用程序元数据",
+      "settings_path_error": "找不到 settings.json 文件"
+    },
+    "unknown": "发生意外错误"
+  }
+}

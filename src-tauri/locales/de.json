@@ -1,0 +1,141 @@
+{
+  "toast": {
+    "buttons": {
+      "dismiss": "Verwerfen"
+    }
+  },
+  "profile": {
+    "process": {
+      "title": "Prozess",
+      "description": "Die Anwendung, für die Sie ein Größenänderungsprofil erstellen möchten. Wenn Sie das Programm nach dem Öffnen dieses Bildschirms gestartet haben, klicken Sie auf die Schaltfläche zum Aktualisieren.",
+      "select": "Prozess auswählen"
+    },
+    "profileName": {
+      "title": "Profilname",
+      "description": "Der Name des Profils, das Sie erstellen möchten. Er wird verwendet, um das Profil in der Profilliste zu identifizieren."
+    },
+    "preset": {
+      "title": "Voreinstellung",
+      "description": "Vorberechnete Werte für einige Dreifachmonitor-Konfigurationen.",
+      "select": "Werte aus Voreinstellung kopieren",
+      "options": {
+        "triple1080p": "Triple 1080p",
+        "triple1440p": "Triple 1440p",
+        "triple4k": "Triple 4k"
+      }
+    },
+    "window": {
+      "width": {
+        "title": "Fensterbreite",
+        "description": "Wahrscheinlich selbsterklärend, die beabsichtigte Breite des Fensters. Bei Dreifachmonitor-Konfigurationen entspricht dies dem 3-fachen der horizontalen Pixel eines einzelnen Bildschirms."
+      },
+      "height": {
+        "title": "Fensterhöhe",
+        "description": "Wahrscheinlich selbsterklärend, die beabsichtigte Höhe des Fensters. Bei Dreifachmonitor-Konfigurationen entspricht dies der Höhe eines einzelnen Bildschirms."
+      },
+      "posY": {
+        "title": "Fensterposition Y",
+        "description": "Die vertikale Position des Fensters auf dem Bildschirm. Normalerweise 0."
+      },
+      "posX": {
+        "title": "Fensterposition X",
+        "description": "Die horizontale Position des Fensters auf dem Bildschirm. Hängt von Ihrer Konfiguration ab. Bei Dreifachmonitoren üblicherweise ein negativer Wert, der der Breite eines einzelnen Bildschirms entspricht."
+      },
+      "borderless": {
+        "title": "Rahmen entfernen",
+        "description": "Entfernt die Rahmen des Fensters. Nur verwenden, wenn Sie den Vollbild-ohne-Rahmen-Modus im Spiel nicht auswählen können."
+      }
+    },
+    "autoResize": {
+      "title": "Automatische Größenänderung",
+      "description": "Ermöglicht die automatische Anwendung dieses Profils beim Start des Programms (erfordert globale Prozessüberwachung).",
+      "enabled": "Automatisch",
+      "disabled": "Manuell"
+    },
+    "autoResizeDelay": {
+      "title": "Verzögerung der automatischen Größenänderung (ms)",
+      "description": "Die Verzögerung in Millisekunden zwischen dem Start des Programms und der Anwendung des Profils."
+    },
+    "shortcut": {
+      "title": "Tastenkombination",
+      "description": "Globale Tastenkombination, um dieses Profil auch bei minimierter App anzuwenden. Muss mindestens einen Modifikator enthalten (Strg, Alt, Umschalt).",
+      "placeholder": "Klicken, um Tastenkombination festzulegen",
+      "listening": "Tastenkombination drücken... (Esc zum Abbrechen)",
+      "clear": "Tastenkombination löschen"
+    },
+    "buttons": {
+      "test": "Profil testen",
+      "cancel": "Abbrechen",
+      "save": "Speichern",
+      "delete": "Löschen"
+    }
+  },
+  "home": {
+    "homepage": "Startseite",
+    "processWatcher": "Prozessüberwachung",
+    "beta": "Beta"
+  },
+  "import": {
+    "label": "Resize-Raccoon-Profile importieren",
+    "button": "Importieren",
+    "success": "{{count}} Profil(e) von Resize Raccoon importiert.",
+    "none": "Keine neuen Profile in den Resize-Raccoon-Daten gefunden.",
+    "error": "Resize-Raccoon-Daten zum Importieren konnten nicht gefunden werden."
+  },
+  "settings": {
+    "language": {
+      "title": "Sprache"
+    },
+    "checkForUpdates": {
+      "title": "Beim Start nach Updates suchen"
+    },
+    "processPollRate": {
+      "title": "Prozessabfragerate (ms)",
+      "description": "Wie oft nach neu gestarteten Anwendungen gesucht werden soll."
+    },
+    "launchOnStart": {
+      "title": "Mit Windows starten"
+    },
+    "startMinimized": {
+      "title": "Minimiert starten",
+      "description": "Startet das Programm minimiert im System-Tray."
+    },
+    "closeToTray": {
+      "title": "In den Tray schließen",
+      "description": "Schließt das Programm in den System-Tray, anstatt es zu beenden."
+    }
+  },
+  "tray": {
+    "show": "Anzeigen",
+    "apply": "Anwenden",
+    "checkForUpdates": "Nach Updates suchen",
+    "exit": "Beenden",
+    "updateAvailableTitle": "Update verfügbar",
+    "updateAvailableMsg": "Version {{version}} ist verfügbar. Jetzt installieren?",
+    "updateErrorTitle": "Update-Fehler",
+    "updateErrorMsg": "Update konnte nicht installiert werden: {{error}}",
+    "upToDateTitle": "Aktuell",
+    "upToDateMsg": "Sie verwenden die neueste Version.",
+    "updateCheckFailedTitle": "Update-Prüfung fehlgeschlagen",
+    "updateCheckFailedMsg": "Es konnte nicht nach Updates gesucht werden: {{error}}"
+  },
+  "attribution": "Basierend auf {{name}} von {{author}}",
+  "errors": {
+    "window_manager": {
+      "process_not_found": "Prozess nicht gefunden. Stellen Sie sicher, dass die Anwendung, die Sie steuern möchten, ausgeführt wird.",
+      "apply_failed": "Profil konnte nicht angewendet werden, Grund unbekannt. Erneut versuchen?",
+      "access_deined": "Profil konnte nicht angewendet werden, Zugriff verweigert. Versuchen Sie, Resize Rabbit als Administrator auszuführen.",
+      "invalid_pid": "Profil konnte nicht angewendet werden, ungültige Prozess-ID. Diesen Fehler werden Sie nie sehen. Falls doch, gewinnen Sie einen Preis."
+    },
+    "profile": {
+      "not_found": "Profil nicht gefunden, starten Sie das Programm neu, um die Profile zu synchronisieren.",
+      "profile_path_error": "Der Profilpfad konnte nicht gefunden werden. Das ist schlecht, sollte aber nicht passieren. Löschen Sie einfach nicht den Anwendungsdatenordner."
+    },
+    "settings": {
+      "launch_on_start_error": "Autostart mit Windows konnte nicht umgeschaltet werden",
+      "unable_to_fetch_app_data": "Anwendungsmetadaten konnten nicht abgerufen werden",
+      "settings_path_error": "Die Datei settings.json konnte nicht gefunden werden"
+    },
+    "unknown": "Unerwarteter Fehler"
+  }
+}

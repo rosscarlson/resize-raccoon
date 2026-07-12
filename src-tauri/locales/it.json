@@ -1,0 +1,141 @@
+{
+  "toast": {
+    "buttons": {
+      "dismiss": "Ignora"
+    }
+  },
+  "profile": {
+    "process": {
+      "title": "Processo",
+      "description": "L'applicazione per cui vuoi creare un profilo di ridimensionamento. Se hai avviato il programma dopo aver aperto questa schermata, fai clic sul pulsante di aggiornamento.",
+      "select": "Seleziona un processo"
+    },
+    "profileName": {
+      "title": "Nome del profilo",
+      "description": "Il nome del profilo che vuoi creare. Verrà utilizzato per identificare il preset nell'elenco dei profili."
+    },
+    "preset": {
+      "title": "Preset",
+      "description": "Valori precalcolati per alcune configurazioni a tre monitor.",
+      "select": "Copia valori dal preset",
+      "options": {
+        "triple1080p": "Triple 1080p",
+        "triple1440p": "Triple 1440p",
+        "triple4k": "Triple 4k"
+      }
+    },
+    "window": {
+      "width": {
+        "title": "Larghezza finestra",
+        "description": "Probabilmente autoesplicativo, la larghezza prevista della finestra. Per configurazioni a tre monitor equivale a 3 volte i pixel orizzontali di un singolo schermo."
+      },
+      "height": {
+        "title": "Altezza finestra",
+        "description": "Probabilmente autoesplicativo, l'altezza prevista della finestra. Per configurazioni a tre monitor equivale all'altezza di un singolo schermo."
+      },
+      "posY": {
+        "title": "Posizione Y finestra",
+        "description": "La posizione verticale della finestra sullo schermo. Solitamente 0."
+      },
+      "posX": {
+        "title": "Posizione X finestra",
+        "description": "La posizione orizzontale della finestra sullo schermo. Dipende dalla tua configurazione. Per tre monitor solitamente un valore negativo pari alla larghezza di un singolo schermo."
+      },
+      "borderless": {
+        "title": "Rimuovi bordi",
+        "description": "Rimuove i bordi della finestra. Usalo solo se non riesci a selezionare la modalità senza bordi nel gioco."
+      }
+    },
+    "autoResize": {
+      "title": "Ridimensionamento automatico",
+      "description": "Consente di applicare automaticamente questo profilo all'avvio del programma (richiede il monitoraggio globale dei processi).",
+      "enabled": "Automatico",
+      "disabled": "Manuale"
+    },
+    "autoResizeDelay": {
+      "title": "Ritardo ridimensionamento automatico (ms)",
+      "description": "Il ritardo in millisecondi tra l'avvio del programma e l'applicazione del profilo."
+    },
+    "shortcut": {
+      "title": "Tasto di scelta rapida",
+      "description": "Scorciatoia globale per applicare questo profilo anche quando l'app è ridotta a icona. Deve includere almeno un modificatore (Ctrl, Alt, Maiusc).",
+      "placeholder": "Fai clic per impostare la scorciatoia",
+      "listening": "Premi una combinazione di tasti... (Esc per annullare)",
+      "clear": "Cancella scorciatoia"
+    },
+    "buttons": {
+      "test": "Testa profilo",
+      "cancel": "Annulla",
+      "save": "Salva",
+      "delete": "Elimina"
+    }
+  },
+  "home": {
+    "homepage": "Home page",
+    "processWatcher": "Monitoraggio processi",
+    "beta": "beta"
+  },
+  "import": {
+    "label": "Importa profili Resize Raccoon",
+    "button": "Importa",
+    "success": "Importati {{count}} profilo/i da Resize Raccoon.",
+    "none": "Nessun nuovo profilo trovato nei dati di Resize Raccoon.",
+    "error": "Impossibile trovare i dati di Resize Raccoon da importare."
+  },
+  "settings": {
+    "language": {
+      "title": "Lingua"
+    },
+    "checkForUpdates": {
+      "title": "Controlla aggiornamenti all'avvio"
+    },
+    "processPollRate": {
+      "title": "Frequenza controllo processi (ms)",
+      "description": "Ogni quanto controllare l'avvio di nuove applicazioni."
+    },
+    "launchOnStart": {
+      "title": "Avvia con Windows"
+    },
+    "startMinimized": {
+      "title": "Avvia ridotto a icona",
+      "description": "Avvia il programma ridotto a icona nella barra delle applicazioni."
+    },
+    "closeToTray": {
+      "title": "Chiudi nella barra delle applicazioni",
+      "description": "Chiude il programma nella barra delle applicazioni invece di uscire."
+    }
+  },
+  "tray": {
+    "show": "Mostra",
+    "apply": "Applica",
+    "checkForUpdates": "Controlla aggiornamenti",
+    "exit": "Esci",
+    "updateAvailableTitle": "Aggiornamento disponibile",
+    "updateAvailableMsg": "La versione {{version}} è disponibile. Installare ora?",
+    "updateErrorTitle": "Errore di aggiornamento",
+    "updateErrorMsg": "Impossibile installare l'aggiornamento: {{error}}",
+    "upToDateTitle": "Aggiornato",
+    "upToDateMsg": "Stai usando l'ultima versione.",
+    "updateCheckFailedTitle": "Controllo aggiornamenti non riuscito",
+    "updateCheckFailedMsg": "Impossibile controllare gli aggiornamenti: {{error}}"
+  },
+  "attribution": "Basato su {{name}} di {{author}}",
+  "errors": {
+    "window_manager": {
+      "process_not_found": "Processo non trovato, assicurati che l'applicazione che stai cercando di controllare sia in esecuzione.",
+      "apply_failed": "Impossibile applicare il profilo, motivo sconosciuto. Riprovare?",
+      "access_deined": "Impossibile applicare il profilo, accesso negato. Prova a eseguire Resize Rabbit come amministratore.",
+      "invalid_pid": "Impossibile applicare il profilo, ID processo non valido. Non vedrai mai questo errore. Se lo vedi, vinci un premio."
+    },
+    "profile": {
+      "not_found": "Profilo non trovato, riavvia il programma per sincronizzare i profili.",
+      "profile_path_error": "Impossibile individuare il percorso del profilo, non va bene, ma non dovrebbe succedere. Non eliminare la cartella dati dell'applicazione."
+    },
+    "settings": {
+      "launch_on_start_error": "Impossibile attivare/disattivare l'avvio con Windows",
+      "unable_to_fetch_app_data": "Impossibile recuperare i metadati dell'applicazione",
+      "settings_path_error": "Impossibile individuare il file settings.json"
+    },
+    "unknown": "Errore imprevisto"
+  }
+}

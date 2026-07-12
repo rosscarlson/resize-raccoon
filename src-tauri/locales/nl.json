@@ -1,0 +1,141 @@
+{
+  "toast": {
+    "buttons": {
+      "dismiss": "Sluiten"
+    }
+  },
+  "profile": {
+    "process": {
+      "title": "Proces",
+      "description": "De toepassing waarvoor je een formaatprofiel wilt maken. Als je het programma hebt gestart nadat je dit scherm opende, klik dan op de vernieuwknop.",
+      "select": "Selecteer een proces"
+    },
+    "profileName": {
+      "title": "Profielnaam",
+      "description": "De naam van het profiel dat je wilt maken. Deze wordt gebruikt om het profiel in de lijst te identificeren."
+    },
+    "preset": {
+      "title": "Voorinstelling",
+      "description": "Vooraf berekende waarden voor sommige opstellingen met drie monitoren.",
+      "select": "Waarden kopiëren uit voorinstelling",
+      "options": {
+        "triple1080p": "Triple 1080p",
+        "triple1440p": "Triple 1440p",
+        "triple4k": "Triple 4k"
+      }
+    },
+    "window": {
+      "width": {
+        "title": "Vensterbreedte",
+        "description": "Waarschijnlijk voor zich sprekend, de bedoelde breedte van het venster. Bij opstellingen met drie monitoren is dit 3x de horizontale pixels van één scherm."
+      },
+      "height": {
+        "title": "Vensterhoogte",
+        "description": "Waarschijnlijk voor zich sprekend, de bedoelde hoogte van het venster. Bij opstellingen met drie monitoren is dit de hoogte van één scherm."
+      },
+      "posY": {
+        "title": "Vensterpositie Y",
+        "description": "De verticale positie van het venster op het scherm. Meestal 0."
+      },
+      "posX": {
+        "title": "Vensterpositie X",
+        "description": "De horizontale positie van het venster op het scherm. Hangt af van je opstelling. Bij drie monitoren meestal een negatieve waarde gelijk aan de breedte van één scherm."
+      },
+      "borderless": {
+        "title": "Randen verwijderen",
+        "description": "Verwijdert de randen van het venster. Gebruik dit alleen als je in de game geen randloze modus kunt selecteren."
+      }
+    },
+    "autoResize": {
+      "title": "Automatisch formaat aanpassen",
+      "description": "Hiermee wordt dit profiel automatisch toegepast wanneer het programma wordt gestart (vereist globale procesbewaking).",
+      "enabled": "Automatisch",
+      "disabled": "Handmatig"
+    },
+    "autoResizeDelay": {
+      "title": "Vertraging automatisch formaat aanpassen (ms)",
+      "description": "De vertraging in milliseconden tussen het starten van het programma en het toepassen van het profiel."
+    },
+    "shortcut": {
+      "title": "Sneltoets",
+      "description": "Globale sneltoets om dit profiel toe te passen, zelfs wanneer de app is geminimaliseerd. Moet minstens één modifier bevatten (Ctrl, Alt, Shift).",
+      "placeholder": "Klik om sneltoets in te stellen",
+      "listening": "Druk op een toetsencombinatie... (Esc om te annuleren)",
+      "clear": "Sneltoets wissen"
+    },
+    "buttons": {
+      "test": "Profiel testen",
+      "cancel": "Annuleren",
+      "save": "Opslaan",
+      "delete": "Verwijderen"
+    }
+  },
+  "home": {
+    "homepage": "Startpagina",
+    "processWatcher": "Procesbewaking",
+    "beta": "bèta"
+  },
+  "import": {
+    "label": "Resize Raccoon-profielen importeren",
+    "button": "Importeren",
+    "success": "{{count}} profiel(en) geïmporteerd van Resize Raccoon.",
+    "none": "Geen nieuwe profielen gevonden in de Resize Raccoon-gegevens.",
+    "error": "Kan geen Resize Raccoon-gegevens vinden om te importeren."
+  },
+  "settings": {
+    "language": {
+      "title": "Taal"
+    },
+    "checkForUpdates": {
+      "title": "Controleren op updates bij opstarten"
+    },
+    "processPollRate": {
+      "title": "Procescontrolefrequentie (ms)",
+      "description": "Hoe vaak er gecontroleerd moet worden op nieuw gestarte toepassingen."
+    },
+    "launchOnStart": {
+      "title": "Starten met Windows"
+    },
+    "startMinimized": {
+      "title": "Geminimaliseerd starten",
+      "description": "Start het programma geminimaliseerd in het systeemvak."
+    },
+    "closeToTray": {
+      "title": "Sluiten naar systeemvak",
+      "description": "Sluit het programma naar het systeemvak in plaats van af te sluiten."
+    }
+  },
+  "tray": {
+    "show": "Weergeven",
+    "apply": "Toepassen",
+    "checkForUpdates": "Controleren op updates",
+    "exit": "Afsluiten",
+    "updateAvailableTitle": "Update beschikbaar",
+    "updateAvailableMsg": "Versie {{version}} is beschikbaar. Nu installeren?",
+    "updateErrorTitle": "Updatefout",
+    "updateErrorMsg": "Installeren van update mislukt: {{error}}",
+    "upToDateTitle": "Up-to-date",
+    "upToDateMsg": "Je gebruikt de nieuwste versie.",
+    "updateCheckFailedTitle": "Controleren op updates mislukt",
+    "updateCheckFailedMsg": "Kan niet controleren op updates: {{error}}"
+  },
+  "attribution": "Gebaseerd op {{name}} door {{author}}",
+  "errors": {
+    "window_manager": {
+      "process_not_found": "Proces niet gevonden, zorg ervoor dat de toepassing die je probeert te besturen actief is.",
+      "apply_failed": "Toepassen van profiel mislukt, reden onbekend. Opnieuw proberen?",
+      "access_deined": "Toepassen van profiel mislukt, toegang geweigerd. Probeer Resize Rabbit als beheerder uit te voeren.",
+      "invalid_pid": "Toepassen van profiel mislukt, ongeldige proces-ID. Je zult deze fout nooit zien. Als je dat wel doet, win je een prijs."
+    },
+    "profile": {
+      "not_found": "Profiel niet gevonden, herstart het programma om profielen te synchroniseren.",
+      "profile_path_error": "Kan het profielpad niet vinden, dit is niet goed, maar zou niet moeten gebeuren. Verwijder in ieder geval niet de toepassingsgegevensmap."
+    },
+    "settings": {
+      "launch_on_start_error": "Kan starten met Windows niet omschakelen",
+      "unable_to_fetch_app_data": "Kan toepassingsmetagegevens niet ophalen",
+      "settings_path_error": "Kan het bestand settings.json niet vinden"
+    },
+    "unknown": "Onverwachte fout"
+  }
+}

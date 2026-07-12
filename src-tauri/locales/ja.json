@@ -1,0 +1,141 @@
+{
+  "toast": {
+    "buttons": {
+      "dismiss": "閉じる"
+    }
+  },
+  "profile": {
+    "process": {
+      "title": "プロセス",
+      "description": "リサイズプロファイルを作成したいアプリケーションです。この画面を開いた後にプログラムを起動した場合は、更新ボタンをクリックしてください。",
+      "select": "プロセスを選択"
+    },
+    "profileName": {
+      "title": "プロファイル名",
+      "description": "作成するプロファイルの名前です。プロファイル一覧でこのプリセットを識別するために使用されます。"
+    },
+    "preset": {
+      "title": "プリセット",
+      "description": "一部のトリプルモニター構成向けにあらかじめ計算された値です。",
+      "select": "プリセットから値をコピー",
+      "options": {
+        "triple1080p": "トリプル 1080p",
+        "triple1440p": "トリプル 1440p",
+        "triple4k": "トリプル 4k"
+      }
+    },
+    "window": {
+      "width": {
+        "title": "ウィンドウの幅",
+        "description": "おそらく説明不要ですが、ウィンドウの目的の幅です。トリプルモニター構成の場合、これは1画面分の水平ピクセル数の3倍になります。"
+      },
+      "height": {
+        "title": "ウィンドウの高さ",
+        "description": "おそらく説明不要ですが、ウィンドウの目的の高さです。トリプルモニター構成の場合、これは1画面分の高さです。"
+      },
+      "posY": {
+        "title": "ウィンドウのY位置",
+        "description": "画面上でのウィンドウの垂直位置です。通常は0です。"
+      },
+      "posX": {
+        "title": "ウィンドウのX位置",
+        "description": "画面上でのウィンドウの水平位置です。お使いの構成によって異なります。トリプルモニターの場合、通常は1画面分の幅と等しい負の値になります。"
+      },
+      "borderless": {
+        "title": "境界線を削除",
+        "description": "ウィンドウの境界線を削除します。ゲーム内でボーダーレスを選択できない場合にのみ使用してください。"
+      }
+    },
+    "autoResize": {
+      "title": "自動リサイズ",
+      "description": "プログラム起動時にこのプロファイルを自動的に適用できるようにします（グローバルなプロセス監視が必要です）。",
+      "enabled": "自動",
+      "disabled": "手動"
+    },
+    "autoResizeDelay": {
+      "title": "自動リサイズの遅延（ミリ秒）",
+      "description": "プログラムの起動からプロファイルが適用されるまでの遅延時間（ミリ秒）です。"
+    },
+    "shortcut": {
+      "title": "ショートカットキー",
+      "description": "アプリが最小化されていてもこのプロファイルを適用できるグローバルホットキーです。少なくとも1つの修飾キー（Ctrl、Alt、Shift）を含める必要があります。",
+      "placeholder": "クリックしてショートカットを設定",
+      "listening": "キーの組み合わせを押してください...（キャンセルはEsc）",
+      "clear": "ショートカットを消去"
+    },
+    "buttons": {
+      "test": "プロファイルをテスト",
+      "cancel": "キャンセル",
+      "save": "保存",
+      "delete": "削除"
+    }
+  },
+  "home": {
+    "homepage": "ホームページ",
+    "processWatcher": "プロセス監視",
+    "beta": "ベータ"
+  },
+  "import": {
+    "label": "Resize Raccoon のプロファイルをインポート",
+    "button": "インポート",
+    "success": "Resize Raccoon から {{count}} 件のプロファイルをインポートしました。",
+    "none": "Resize Raccoon のデータに新しいプロファイルが見つかりませんでした。",
+    "error": "インポートする Resize Raccoon のデータが見つかりませんでした。"
+  },
+  "settings": {
+    "language": {
+      "title": "言語"
+    },
+    "checkForUpdates": {
+      "title": "起動時にアップデートを確認"
+    },
+    "processPollRate": {
+      "title": "プロセス確認間隔（ミリ秒）",
+      "description": "新しいアプリケーションの起動をどのくらいの頻度で確認するかです。"
+    },
+    "launchOnStart": {
+      "title": "Windows起動時に開始"
+    },
+    "startMinimized": {
+      "title": "最小化した状態で起動",
+      "description": "プログラムをシステムトレイに最小化した状態で起動します。"
+    },
+    "closeToTray": {
+      "title": "トレイに閉じる",
+      "description": "終了する代わりにプログラムをシステムトレイに閉じます。"
+    }
+  },
+  "tray": {
+    "show": "表示",
+    "apply": "適用",
+    "checkForUpdates": "アップデートを確認",
+    "exit": "終了",
+    "updateAvailableTitle": "アップデートが利用可能です",
+    "updateAvailableMsg": "バージョン {{version}} が利用可能です。今すぐインストールしますか？",
+    "updateErrorTitle": "アップデートエラー",
+    "updateErrorMsg": "アップデートのインストールに失敗しました: {{error}}",
+    "upToDateTitle": "最新の状態です",
+    "upToDateMsg": "最新バージョンを使用しています。",
+    "updateCheckFailedTitle": "アップデートの確認に失敗しました",
+    "updateCheckFailedMsg": "アップデートを確認できませんでした: {{error}}"
+  },
+  "attribution": "{{author}} による {{name}} をベースにしています",
+  "errors": {
+    "window_manager": {
+      "process_not_found": "プロセスが見つかりません。制御しようとしているアプリケーションが実行中であることを確認してください。",
+      "apply_failed": "プロファイルの適用に失敗しました。理由は不明です。再試行しますか？",
+      "access_deined": "プロファイルの適用に失敗しました。アクセスが拒否されました。Resize Rabbit を管理者として実行してみてください。",
+      "invalid_pid": "プロファイルの適用に失敗しました。プロセスIDが無効です。このエラーが表示されることはまずありません。もし表示されたら、あなたの当たりです。"
+    },
+    "profile": {
+      "not_found": "プロファイルが見つかりません。プログラムを再起動してプロファイルを同期してください。",
+      "profile_path_error": "プロファイルのパスを特定できませんでした。よくない状態ですが、通常は発生しません。アプリケーションのデータフォルダーは削除しないでください。"
+    },
+    "settings": {
+      "launch_on_start_error": "Windows起動時の開始設定を切り替えられませんでした",
+      "unable_to_fetch_app_data": "アプリケーションのメタデータを取得できませんでした",
+      "settings_path_error": "settings.json ファイルを見つけられませんでした"
+    },
+    "unknown": "予期しないエラー"
+  }
+}

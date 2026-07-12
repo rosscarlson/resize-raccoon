@@ -1,0 +1,141 @@
+{
+  "toast": {
+    "buttons": {
+      "dismiss": "Ignorer"
+    }
+  },
+  "profile": {
+    "process": {
+      "title": "Processus",
+      "description": "L'application pour laquelle vous souhaitez créer un profil de redimensionnement. Si vous avez lancé le programme après avoir ouvert cet écran, cliquez sur le bouton d'actualisation.",
+      "select": "Sélectionner un processus"
+    },
+    "profileName": {
+      "title": "Nom du profil",
+      "description": "Le nom du profil que vous souhaitez créer. Il sera utilisé pour identifier le préréglage dans la liste des profils."
+    },
+    "preset": {
+      "title": "Préréglage",
+      "description": "Valeurs précalculées pour certaines configurations à trois moniteurs.",
+      "select": "Copier les valeurs du préréglage",
+      "options": {
+        "triple1080p": "Triple 1080p",
+        "triple1440p": "Triple 1440p",
+        "triple4k": "Triple 4k"
+      }
+    },
+    "window": {
+      "width": {
+        "title": "Largeur de la fenêtre",
+        "description": "Probablement évident, la largeur prévue de la fenêtre. Pour une configuration à trois moniteurs, il s'agit de 3 fois la largeur en pixels d'un seul écran."
+      },
+      "height": {
+        "title": "Hauteur de la fenêtre",
+        "description": "Probablement évident, la hauteur prévue de la fenêtre. Pour une configuration à trois moniteurs, il s'agit de la hauteur d'un seul écran."
+      },
+      "posY": {
+        "title": "Position Y de la fenêtre",
+        "description": "La position verticale de la fenêtre à l'écran. Habituellement 0."
+      },
+      "posX": {
+        "title": "Position X de la fenêtre",
+        "description": "La position horizontale de la fenêtre à l'écran. Dépend de votre configuration. Pour trois moniteurs, il s'agit généralement d'une valeur négative égale à la largeur d'un seul écran."
+      },
+      "borderless": {
+        "title": "Supprimer les bordures",
+        "description": "Supprime les bordures de la fenêtre. À utiliser uniquement si vous ne pouvez pas sélectionner le mode sans bordure dans le jeu."
+      }
+    },
+    "autoResize": {
+      "title": "Redimensionnement automatique",
+      "description": "Permet d'appliquer automatiquement ce profil au lancement du programme (nécessite la surveillance globale des processus).",
+      "enabled": "Automatique",
+      "disabled": "Manuel"
+    },
+    "autoResizeDelay": {
+      "title": "Délai de redimensionnement automatique (ms)",
+      "description": "Le délai en millisecondes entre le lancement du programme et l'application du profil."
+    },
+    "shortcut": {
+      "title": "Touche de raccourci",
+      "description": "Raccourci global pour appliquer ce profil même lorsque l'application est réduite. Doit inclure au moins un modificateur (Ctrl, Alt, Maj).",
+      "placeholder": "Cliquez pour définir un raccourci",
+      "listening": "Appuyez sur une combinaison de touches... (Échap pour annuler)",
+      "clear": "Effacer le raccourci"
+    },
+    "buttons": {
+      "test": "Tester le profil",
+      "cancel": "Annuler",
+      "save": "Enregistrer",
+      "delete": "Supprimer"
+    }
+  },
+  "home": {
+    "homepage": "Page d'accueil",
+    "processWatcher": "Surveillance des processus",
+    "beta": "bêta"
+  },
+  "import": {
+    "label": "Importer les profils Resize Raccoon",
+    "button": "Importer",
+    "success": "{{count}} profil(s) importé(s) depuis Resize Raccoon.",
+    "none": "Aucun nouveau profil trouvé dans les données de Resize Raccoon.",
+    "error": "Impossible de trouver les données de Resize Raccoon à importer."
+  },
+  "settings": {
+    "language": {
+      "title": "Langue"
+    },
+    "checkForUpdates": {
+      "title": "Vérifier les mises à jour au lancement"
+    },
+    "processPollRate": {
+      "title": "Fréquence de vérification des processus (ms)",
+      "description": "À quelle fréquence vérifier le lancement de nouvelles applications."
+    },
+    "launchOnStart": {
+      "title": "Démarrer avec Windows"
+    },
+    "startMinimized": {
+      "title": "Démarrer minimisé",
+      "description": "Démarre le programme minimisé dans la barre d'état système."
+    },
+    "closeToTray": {
+      "title": "Fermer dans la barre d'état système",
+      "description": "Ferme le programme dans la barre d'état système au lieu de quitter."
+    }
+  },
+  "tray": {
+    "show": "Afficher",
+    "apply": "Appliquer",
+    "checkForUpdates": "Vérifier les mises à jour",
+    "exit": "Quitter",
+    "updateAvailableTitle": "Mise à jour disponible",
+    "updateAvailableMsg": "La version {{version}} est disponible. Installer maintenant ?",
+    "updateErrorTitle": "Erreur de mise à jour",
+    "updateErrorMsg": "Échec de l'installation de la mise à jour : {{error}}",
+    "upToDateTitle": "À jour",
+    "upToDateMsg": "Vous utilisez la dernière version.",
+    "updateCheckFailedTitle": "Échec de la vérification des mises à jour",
+    "updateCheckFailedMsg": "Impossible de vérifier les mises à jour : {{error}}"
+  },
+  "attribution": "Basé sur {{name}} par {{author}}",
+  "errors": {
+    "window_manager": {
+      "process_not_found": "Processus introuvable, assurez-vous que l'application que vous essayez de contrôler est en cours d'exécution.",
+      "apply_failed": "Échec de l'application du profil, raison inconnue. Réessayer ?",
+      "access_deined": "Échec de l'application du profil, accès refusé. Essayez d'exécuter Resize Rabbit en tant qu'administrateur.",
+      "invalid_pid": "Échec de l'application du profil, identifiant de processus invalide. Vous ne verrez jamais cette erreur. Si c'est le cas, vous gagnez un prix."
+    },
+    "profile": {
+      "not_found": "Profil introuvable, redémarrez le programme pour synchroniser les profils.",
+      "profile_path_error": "Impossible de localiser le chemin du profil, c'est fâcheux, mais ne devrait pas arriver. Ne supprimez pas le dossier de données de l'application."
+    },
+    "settings": {
+      "launch_on_start_error": "Impossible de basculer le démarrage avec Windows",
+      "unable_to_fetch_app_data": "Impossible de récupérer les métadonnées de l'application",
+      "settings_path_error": "Impossible de localiser le fichier settings.json"
+    },
+    "unknown": "Erreur inattendue"
+  }
+}

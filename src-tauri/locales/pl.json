@@ -1,0 +1,141 @@
+{
+  "toast": {
+    "buttons": {
+      "dismiss": "Odrzuć"
+    }
+  },
+  "profile": {
+    "process": {
+      "title": "Proces",
+      "description": "Aplikacja, dla której chcesz utworzyć profil zmiany rozmiaru. Jeśli uruchomiłeś program po otwarciu tego ekranu, kliknij przycisk odświeżania.",
+      "select": "Wybierz proces"
+    },
+    "profileName": {
+      "title": "Nazwa profilu",
+      "description": "Nazwa profilu, który chcesz utworzyć. Będzie używana do identyfikacji profilu na liście profili."
+    },
+    "preset": {
+      "title": "Ustawienie predefiniowane",
+      "description": "Wstępnie obliczone wartości dla niektórych konfiguracji z trzema monitorami.",
+      "select": "Skopiuj wartości z ustawienia predefiniowanego",
+      "options": {
+        "triple1080p": "Triple 1080p",
+        "triple1440p": "Triple 1440p",
+        "triple4k": "Triple 4k"
+      }
+    },
+    "window": {
+      "width": {
+        "title": "Szerokość okna",
+        "description": "Prawdopodobnie oczywiste, zamierzona szerokość okna. Przy konfiguracji z trzema monitorami jest to 3-krotność liczby pikseli poziomych jednego ekranu."
+      },
+      "height": {
+        "title": "Wysokość okna",
+        "description": "Prawdopodobnie oczywiste, zamierzona wysokość okna. Przy konfiguracji z trzema monitorami jest to wysokość jednego ekranu."
+      },
+      "posY": {
+        "title": "Pozycja Y okna",
+        "description": "Pionowe położenie okna na ekranie. Zwykle 0."
+      },
+      "posX": {
+        "title": "Pozycja X okna",
+        "description": "Poziome położenie okna na ekranie. Zależy od Twojej konfiguracji. Przy trzech monitorach zwykle wartość ujemna równa szerokości jednego ekranu."
+      },
+      "borderless": {
+        "title": "Usuń obramowania",
+        "description": "Usuwa obramowania okna. Używaj tylko wtedy, gdy nie możesz wybrać trybu bez obramowania w grze."
+      }
+    },
+    "autoResize": {
+      "title": "Automatyczna zmiana rozmiaru",
+      "description": "Umożliwia automatyczne zastosowanie tego profilu po uruchomieniu programu (wymaga globalnego monitorowania procesów).",
+      "enabled": "Automatyczny",
+      "disabled": "Ręczny"
+    },
+    "autoResizeDelay": {
+      "title": "Opóźnienie automatycznej zmiany rozmiaru (ms)",
+      "description": "Opóźnienie w milisekundach między uruchomieniem programu a zastosowaniem profilu."
+    },
+    "shortcut": {
+      "title": "Skrót klawiszowy",
+      "description": "Globalny skrót klawiszowy umożliwiający zastosowanie tego profilu nawet po zminimalizowaniu aplikacji. Musi zawierać co najmniej jeden modyfikator (Ctrl, Alt, Shift).",
+      "placeholder": "Kliknij, aby ustawić skrót",
+      "listening": "Naciśnij kombinację klawiszy... (Esc, aby anulować)",
+      "clear": "Wyczyść skrót"
+    },
+    "buttons": {
+      "test": "Testuj profil",
+      "cancel": "Anuluj",
+      "save": "Zapisz",
+      "delete": "Usuń"
+    }
+  },
+  "home": {
+    "homepage": "Strona główna",
+    "processWatcher": "Monitor procesów",
+    "beta": "beta"
+  },
+  "import": {
+    "label": "Importuj profile Resize Raccoon",
+    "button": "Importuj",
+    "success": "Zaimportowano {{count}} profil(e/i) z Resize Raccoon.",
+    "none": "Nie znaleziono nowych profili w danych Resize Raccoon.",
+    "error": "Nie można znaleźć danych Resize Raccoon do zaimportowania."
+  },
+  "settings": {
+    "language": {
+      "title": "Język"
+    },
+    "checkForUpdates": {
+      "title": "Sprawdzaj aktualizacje przy uruchomieniu"
+    },
+    "processPollRate": {
+      "title": "Częstotliwość sprawdzania procesów (ms)",
+      "description": "Jak często sprawdzać uruchamianie nowych aplikacji."
+    },
+    "launchOnStart": {
+      "title": "Uruchamiaj z systemem Windows"
+    },
+    "startMinimized": {
+      "title": "Uruchom zminimalizowany",
+      "description": "Uruchamia program zminimalizowany w zasobniku systemowym."
+    },
+    "closeToTray": {
+      "title": "Zamknij do zasobnika",
+      "description": "Zamyka program do zasobnika systemowego zamiast go zamykać całkowicie."
+    }
+  },
+  "tray": {
+    "show": "Pokaż",
+    "apply": "Zastosuj",
+    "checkForUpdates": "Sprawdź aktualizacje",
+    "exit": "Zakończ",
+    "updateAvailableTitle": "Dostępna aktualizacja",
+    "updateAvailableMsg": "Dostępna jest wersja {{version}}. Zainstalować teraz?",
+    "updateErrorTitle": "Błąd aktualizacji",
+    "updateErrorMsg": "Nie udało się zainstalować aktualizacji: {{error}}",
+    "upToDateTitle": "Aktualna wersja",
+    "upToDateMsg": "Używasz najnowszej wersji.",
+    "updateCheckFailedTitle": "Sprawdzanie aktualizacji nie powiodło się",
+    "updateCheckFailedMsg": "Nie można sprawdzić aktualizacji: {{error}}"
+  },
+  "attribution": "Oparte na {{name}} autorstwa {{author}}",
+  "errors": {
+    "window_manager": {
+      "process_not_found": "Nie znaleziono procesu, upewnij się, że aplikacja, którą próbujesz kontrolować, jest uruchomiona.",
+      "apply_failed": "Nie udało się zastosować profilu, przyczyna nieznana. Spróbować ponownie?",
+      "access_deined": "Nie udało się zastosować profilu, odmowa dostępu. Spróbuj uruchomić Resize Rabbit jako administrator.",
+      "invalid_pid": "Nie udało się zastosować profilu, nieprawidłowy identyfikator procesu. Nigdy nie zobaczysz tego błędu. Jeśli go zobaczysz, wygrywasz nagrodę."
+    },
+    "profile": {
+      "not_found": "Nie znaleziono profilu, uruchom ponownie program, aby zsynchronizować profile.",
+      "profile_path_error": "Nie można zlokalizować ścieżki profilu, to niedobrze, ale nie powinno się zdarzyć. Po prostu nie usuwaj folderu danych aplikacji."
+    },
+    "settings": {
+      "launch_on_start_error": "Nie można przełączyć uruchamiania z systemem Windows",
+      "unable_to_fetch_app_data": "Nie można pobrać metadanych aplikacji",
+      "settings_path_error": "Nie można zlokalizować pliku settings.json"
+    },
+    "unknown": "Nieoczekiwany błąd"
+  }
+}

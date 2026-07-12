@@ -1,6 +1,6 @@
 [package]
 name = "resize-rabbit"
-version = "0.6.1"
+version = "1.0.0"
 description = "Resize Rabbit"
 authors = ["rosscarlson"]
 license = ""

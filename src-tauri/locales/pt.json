@@ -1,0 +1,141 @@
+{
+  "toast": {
+    "buttons": {
+      "dismiss": "Dispensar"
+    }
+  },
+  "profile": {
+    "process": {
+      "title": "Processo",
+      "description": "O aplicativo para o qual você deseja criar um perfil de redimensionamento. Se você iniciou o programa depois de abrir esta tela, clique no botão de atualizar.",
+      "select": "Selecionar um processo"
+    },
+    "profileName": {
+      "title": "Nome do perfil",
+      "description": "O nome do perfil que você deseja criar. Será usado para identificar o perfil na lista de perfis."
+    },
+    "preset": {
+      "title": "Predefinição",
+      "description": "Valores pré-calculados para algumas configurações de triplo monitor.",
+      "select": "Copiar valores da predefinição",
+      "options": {
+        "triple1080p": "Triplo 1080p",
+        "triple1440p": "Triplo 1440p",
+        "triple4k": "Triplo 4k"
+      }
+    },
+    "window": {
+      "width": {
+        "title": "Largura da janela",
+        "description": "Provavelmente óbvio, a largura pretendida da janela. Para configurações de triplo monitor, isso é 3x os pixels horizontais de uma única tela."
+      },
+      "height": {
+        "title": "Altura da janela",
+        "description": "Provavelmente óbvio, a altura pretendida da janela. Para configurações de triplo monitor, essa é a altura de uma única tela."
+      },
+      "posY": {
+        "title": "Posição Y da janela",
+        "description": "A posição vertical da janela na tela. Geralmente 0."
+      },
+      "posX": {
+        "title": "Posição X da janela",
+        "description": "A posição horizontal da janela na tela. Depende da sua configuração. Para triplo monitor, geralmente um valor negativo igual à largura de uma única tela."
+      },
+      "borderless": {
+        "title": "Remover bordas",
+        "description": "Remove as bordas da janela. Use apenas se você não conseguir selecionar sem bordas dentro do jogo."
+      }
+    },
+    "autoResize": {
+      "title": "Redimensionamento automático",
+      "description": "Permite que este perfil seja aplicado automaticamente quando o programa é iniciado (requer monitoramento global de processos).",
+      "enabled": "Automático",
+      "disabled": "Manual"
+    },
+    "autoResizeDelay": {
+      "title": "Atraso do redimensionamento automático (ms)",
+      "description": "O atraso em milissegundos entre o início do programa e a aplicação do perfil."
+    },
+    "shortcut": {
+      "title": "Tecla de atalho",
+      "description": "Atalho global para aplicar este perfil mesmo quando o aplicativo está minimizado. Deve incluir pelo menos um modificador (Ctrl, Alt, Shift).",
+      "placeholder": "Clique para definir o atalho",
+      "listening": "Pressione uma combinação de teclas... (Esc para cancelar)",
+      "clear": "Limpar atalho"
+    },
+    "buttons": {
+      "test": "Testar perfil",
+      "cancel": "Cancelar",
+      "save": "Salvar",
+      "delete": "Excluir"
+    }
+  },
+  "home": {
+    "homepage": "Página inicial",
+    "processWatcher": "Monitor de processos",
+    "beta": "beta"
+  },
+  "import": {
+    "label": "Importar perfis do Resize Raccoon",
+    "button": "Importar",
+    "success": "{{count}} perfil(is) importado(s) do Resize Raccoon.",
+    "none": "Nenhum perfil novo encontrado nos dados do Resize Raccoon.",
+    "error": "Não foi possível encontrar os dados do Resize Raccoon para importar."
+  },
+  "settings": {
+    "language": {
+      "title": "Idioma"
+    },
+    "checkForUpdates": {
+      "title": "Verificar atualizações ao iniciar"
+    },
+    "processPollRate": {
+      "title": "Taxa de verificação de processos (ms)",
+      "description": "Com que frequência verificar novos aplicativos sendo iniciados."
+    },
+    "launchOnStart": {
+      "title": "Iniciar com o Windows"
+    },
+    "startMinimized": {
+      "title": "Iniciar minimizado",
+      "description": "Inicia o programa minimizado na bandeja do sistema."
+    },
+    "closeToTray": {
+      "title": "Fechar para a bandeja",
+      "description": "Fecha o programa para a bandeja do sistema em vez de sair."
+    }
+  },
+  "tray": {
+    "show": "Mostrar",
+    "apply": "Aplicar",
+    "checkForUpdates": "Verificar atualizações",
+    "exit": "Sair",
+    "updateAvailableTitle": "Atualização disponível",
+    "updateAvailableMsg": "A versão {{version}} está disponível. Instalar agora?",
+    "updateErrorTitle": "Erro de atualização",
+    "updateErrorMsg": "Falha ao instalar a atualização: {{error}}",
+    "upToDateTitle": "Atualizado",
+    "upToDateMsg": "Você está usando a versão mais recente.",
+    "updateCheckFailedTitle": "Falha ao verificar atualizações",
+    "updateCheckFailedMsg": "Não foi possível verificar atualizações: {{error}}"
+  },
+  "attribution": "Baseado em {{name}} por {{author}}",
+  "errors": {
+    "window_manager": {
+      "process_not_found": "Processo não encontrado, verifique se o aplicativo que você está tentando controlar está em execução.",
+      "apply_failed": "Falha ao aplicar o perfil, motivo desconhecido. Tentar novamente?",
+      "access_deined": "Falha ao aplicar o perfil, acesso negado. Tente executar o Resize Rabbit como administrador.",
+      "invalid_pid": "Falha ao aplicar o perfil, ID de processo inválido. Você nunca verá este erro. Se vir, ganha um prêmio."
+    },
+    "profile": {
+      "not_found": "Perfil não encontrado, reinicie o programa para sincronizar os perfis.",
+      "profile_path_error": "Não foi possível localizar o caminho do perfil, isso é ruim, mas não deveria acontecer. Só não exclua a pasta de dados do aplicativo."
+    },
+    "settings": {
+      "launch_on_start_error": "Não foi possível alternar o início com o Windows",
+      "unable_to_fetch_app_data": "Não foi possível obter os metadados do aplicativo",
+      "settings_path_error": "Não foi possível localizar o arquivo settings.json"
+    },
+    "unknown": "Erro inesperado"
+  }
+}

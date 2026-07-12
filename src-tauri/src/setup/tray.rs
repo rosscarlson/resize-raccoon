@@ -12,6 +12,16 @@ use crate::setup::state::AppState;
 const BUNDLED_LOCALES: &[(&str, &str)] = &[
     ("en", include_str!("../../locales/en.json")),
     ("es", include_str!("../../locales/es.json")),
+    ("fr", include_str!("../../locales/fr.json")),
+    ("de", include_str!("../../locales/de.json")),
+    ("it", include_str!("../../locales/it.json")),
+    ("pt", include_str!("../../locales/pt.json")),
+    ("nl", include_str!("../../locales/nl.json")),
+    ("pl", include_str!("../../locales/pl.json")),
+    ("ru", include_str!("../../locales/ru.json")),
+    ("zh", include_str!("../../locales/zh.json")),
+    ("ja", include_str!("../../locales/ja.json")),
+    ("ko", include_str!("../../locales/ko.json")),
 ];
 
 pub struct TrayStrings {
