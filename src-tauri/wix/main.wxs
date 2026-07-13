@@ -15,7 +15,7 @@
             UpgradeCode="933d6ae4-6b29-5400-8849-b6b4a76fecc2"
             Language="!(loc.TauriLanguage)"
             Manufacturer="jasbone"
-            Version="1.0.1">
+            Version="1.0.2">
 
         <Package Id="*"
                  Keywords="Installer"
@@ -34,6 +34,15 @@
              matches the app's own default) -->
         <Property Id="DESKTOPSHORTCUT" Value="1" />
         <Property Id="LAUNCHONSTARTUP" Value="0" />
+
+        <!-- Detects whether a desktop shortcut file is currently present, so a silent
+             auto-update (which runs no UI and can't know the user's original choice, or
+             that they later deleted it) doesn't recreate one the user deleted. -->
+        <Property Id="DESKTOPSHORTCUTEXISTS" Secure="yes">
+            <DirectorySearch Id="DesktopFolderSearch" Path="[DesktopFolder]">
+                <FileSearch Id="DesktopShortcutFileSearch" Name="Resize Rabbit.lnk" />
+            </DirectorySearch>
+        </Property>
 
             <MajorUpgrade Schedule="afterInstallInitialize" AllowDowngrades="yes" />
 
@@ -103,7 +112,11 @@
         <Directory Id="TARGETDIR" Name="SourceDir">
             <Directory Id="DesktopFolder" Name="Desktop">
                 <Component Id="ApplicationShortcutDesktop" Guid="*">
-                    <Condition>DESKTOPSHORTCUT = "1"</Condition>
+                    <!-- Fresh install: honor the checkbox. Upgrade (silent, no UI, so
+                         DESKTOPSHORTCUT is just its hardcoded default): only (re)create the
+                         shortcut if it's still actually on the desktop - never bring back one
+                         the user deleted. -->
+                    <Condition>(WIX_UPGRADE_DETECTED AND DESKTOPSHORTCUTEXISTS) OR (NOT WIX_UPGRADE_DETECTED AND DESKTOPSHORTCUT = "1")</Condition>
                     <Shortcut Id="ApplicationDesktopShortcut" Name="Resize Rabbit" Description="Runs Resize Rabbit" Target="[!Path]" WorkingDirectory="INSTALLDIR" />
                     <RemoveFolder Id="DesktopFolder" On="uninstall" />
                     <RegistryValue Root="HKCU" Key="Software\jasbone\Resize Rabbit" Name="Desktop Shortcut" Type="integer" Value="1" KeyPath="yes" />
