@@ -1,11 +1,11 @@
 {
-  "version": "1.0.0",
-  "notes": "Adds French, German, Italian, Portuguese, Dutch, Polish, Russian, Chinese, Japanese, and Korean translations, bringing total supported languages to 12. First 1.0 release.",
-  "pub_date": "2026-07-12T00:00:00Z",
+  "version": "1.0.1",
+  "notes": "System tray menu reordered (Show/Check for Updates/Exit above profiles). Installer now offers a desktop shortcut opt-out and a launch-at-startup opt-in. App now offers to import Resize Raccoon profiles automatically when none exist yet.",
+  "pub_date": "2026-07-13T00:00:00Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRaTA2bWpwbWlqM0lzcHQyczVjYisra0JLS2g4bXRhMGZwbkV5UVBKdnNyTjcxZnBqUjlHYTcvVERtZUtyUWhFQVBYRlRiZ1Y3ZDB2dHA1ampTTk8vdXN5cXZyNDlQV0FBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzgzODg0MTQ3CWZpbGU6UmVzaXplIFJhYmJpdF8xLjAuMF94NjRfZW4tVVMubXNpLnppcAp3NUwrZHA3WndIalNsaTdQRmFqbFFmSHJkM0hPZGQyVDBVMFA0aERFWnNQWEZBV3Q2bUo4djJRV2pqazV5SWlDV0o2OSsrQUtmbXI2NTgvaUdXaTVCZz09Cg==",
-      "url": "https://github.com/rosscarlson/resize-rabbit/releases/download/v1.0.0/Resize.Rabbit_1.0.0_x64_en-US.msi.zip"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRaTA2bWpwbWlqM0xKMVVTYXo4QjhKNkpBMGUxQ3ZzMVh1UmlZWWorNktmMlF1WHpOK1NBckVDeUdYbEQ3c2hxZXFmcHdJellEWjVoN2V1dXZldWpCN0EzdUxHdERNR1EwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzgzOTczMTY3CWZpbGU6UmVzaXplIFJhYmJpdF8xLjAuMV94NjRfZW4tVVMubXNpLnppcAprajhxeVF5UzdXZDFsNjhsWGFVOHd0ZWJuTmNaOUNzT0VwRzNQQ3lWTXNTN29DR2pQTDhaQnFCZ25qWnZKdnZvMDBxMk1VNHBjbXNkRjRpQmhwdytEdz09Cg==",
+      "url": "https://github.com/rosscarlson/resize-rabbit/releases/download/v1.0.1/Resize.Rabbit_1.0.1_x64_en-US.msi.zip"
     }
   }
 }
