@@ -1,11 +1,11 @@
 {
-  "version": "1.0.1",
-  "notes": "System tray menu reordered (Show/Check for Updates/Exit above profiles). Installer now offers a desktop shortcut opt-out and a launch-at-startup opt-in. App now offers to import Resize Raccoon profiles automatically when none exist yet.",
-  "pub_date": "2026-07-13T00:00:00Z",
+  "version": "1.0.2",
+  "notes": "Fixes the installer recreating a deleted desktop shortcut whenever auto-updating. Desktop shortcut state is now preserved across updates instead of being forced back on.",
+  "pub_date": "2026-07-13T00:10:00Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRaTA2bWpwbWlqM0xKMVVTYXo4QjhKNkpBMGUxQ3ZzMVh1UmlZWWorNktmMlF1WHpOK1NBckVDeUdYbEQ3c2hxZXFmcHdJellEWjVoN2V1dXZldWpCN0EzdUxHdERNR1EwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzgzOTczMTY3CWZpbGU6UmVzaXplIFJhYmJpdF8xLjAuMV94NjRfZW4tVVMubXNpLnppcAprajhxeVF5UzdXZDFsNjhsWGFVOHd0ZWJuTmNaOUNzT0VwRzNQQ3lWTXNTN29DR2pQTDhaQnFCZ25qWnZKdnZvMDBxMk1VNHBjbXNkRjRpQmhwdytEdz09Cg==",
-      "url": "https://github.com/rosscarlson/resize-rabbit/releases/download/v1.0.1/Resize.Rabbit_1.0.1_x64_en-US.msi.zip"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRaTA2bWpwbWlqM016bmhtaWVyWEUxWXRaa25DRHhvdmhTajdBRHRQK2NNRVpGUTZJaHNodmpSb25TZERxOFB3a3dXVkxlWUpsdlBmeXdjYVJuV1Fxc2Q4bzJWTG9rL3cwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzgzOTczNjE1CWZpbGU6UmVzaXplIFJhYmJpdF8xLjAuMl94NjRfZW4tVVMubXNpLnppcAo1TTJMeXVxZDlKa09OTW54Q1hqWkpPQUdQcEYrZXZ6TTUyWHlvWFRUbFRnN3prNVNjb0FiV1Ewb2xiR1VtcTkvdnhGS3ZvMWI0ZWFFRUF4YlQ5U1pCdz09Cg==",
+      "url": "https://github.com/rosscarlson/resize-rabbit/releases/download/v1.0.2/Resize.Rabbit_1.0.2_x64_en-US.msi.zip"
     }
   }
 }
