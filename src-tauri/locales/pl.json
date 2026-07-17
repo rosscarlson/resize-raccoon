@@ -67,7 +67,7 @@
       "clear": "Wyczyść skrót"
     },
     "buttons": {
-      "test": "Testuj profil",
+      "test": "Testuj | Zastosuj",
       "cancel": "Anuluj",
       "save": "Zapisz",
       "delete": "Usuń"
@@ -106,6 +106,10 @@
     "closeToTray": {
       "title": "Zamknij do zasobnika",
       "description": "Zamyka program do zasobnika systemowego zamiast go zamykać całkowicie."
+    },
+    "loggingEnabled": {
+      "title": "Rejestrowanie",
+      "description": "Zapisuje dzienniki diagnostyczne w folderze 'logs' obok aplikacji. Przydatne przy rozwiązywaniu problemów; wyłącz po zakończeniu."
     }
   },
   "tray": {

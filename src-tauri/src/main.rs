@@ -23,6 +23,7 @@ mod errors;
 
 
 mod debug_utils;
+mod logging;
 
 use crate::operations::{process, profile, user_settings, window_manager};
 

@@ -19,21 +19,25 @@ macro_rules! define_debug_levels {
 
 #[macro_export]
 macro_rules! debug_log_level {
-    ($level:expr, $($arg:tt)*) => {
+    ($level:expr, $($arg:tt)*) => {{
+        let __msg = format!($($arg)*);
         if $crate::debug_utils::current_debug_level() as u8 >= $level as u8 {
-            println!($($arg)*);
+            println!("{}", __msg);
         }
-    };
+        $crate::logging::log(&__msg);
+    }};
 }
 
 
 #[macro_export]
 macro_rules! debug_log {
-    ($($arg:tt)*) => {
+    ($($arg:tt)*) => {{
+        let __msg = format!($($arg)*);
         if $crate::debug_utils::current_debug_level()as u8 >= $crate::debug_utils::DebugLevel::Common as u8 {
-            println!($($arg)*);
+            println!("{}", __msg);
         }
-    };
+        $crate::logging::log(&__msg);
+    }};
 }
 
 pub fn current_debug_level() -> DebugLevel {

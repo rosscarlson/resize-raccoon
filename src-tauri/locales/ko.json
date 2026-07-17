@@ -67,7 +67,7 @@
       "clear": "단축키 지우기"
     },
     "buttons": {
-      "test": "프로필 테스트",
+      "test": "테스트 | 적용",
       "cancel": "취소",
       "save": "저장",
       "delete": "삭제"
@@ -106,6 +106,10 @@
     "closeToTray": {
       "title": "트레이로 닫기",
       "description": "종료하는 대신 프로그램을 시스템 트레이로 닫습니다."
+    },
+    "loggingEnabled": {
+      "title": "로깅",
+      "description": "애플리케이션 옆의 'logs' 폴더에 진단 로그를 기록합니다. 문제 해결에 유용합니다. 완료되면 꺼 주세요."
     }
   },
   "tray": {

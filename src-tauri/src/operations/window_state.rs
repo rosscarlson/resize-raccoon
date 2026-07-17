@@ -28,8 +28,16 @@ fn get_window_state_path<R: Runtime>(app_handle: &AppHandle<R>) -> Option<PathBu
 /// spot next launch. Windows always spawns a window with no explicit x/y on the primary
 /// monitor, which is why the app previously always reappeared on monitor 1 for
 /// multi-monitor users.
+///
+/// Deliberately saves `inner_size` here, not `outer_size` — `restore_window_state` below
+/// calls `Window::set_size`, which Tauri implements as `set_inner_size` under the hood
+/// (sets the client area, excluding the title bar/borders). Saving `outer_size` (the
+/// *whole* window) but restoring it as an inner size grows the window by the title-bar/
+/// border amount on every single restore — each close-then-reopen cycle saved an
+/// already-inflated size and inflated it again, compounding without bound across
+/// launches (reported as the window "keeps getting bigger and bigger and bigger").
 pub fn save_window_state<R: Runtime>(window: &Window<R>) {
-    let (Ok(position), Ok(size)) = (window.outer_position(), window.outer_size()) else {
+    let (Ok(position), Ok(size)) = (window.outer_position(), window.inner_size()) else {
         return;
     };
 

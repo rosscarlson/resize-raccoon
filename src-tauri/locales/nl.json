@@ -67,7 +67,7 @@
       "clear": "Sneltoets wissen"
     },
     "buttons": {
-      "test": "Profiel testen",
+      "test": "Testen | Toepassen",
       "cancel": "Annuleren",
       "save": "Opslaan",
       "delete": "Verwijderen"
@@ -106,6 +106,10 @@
     "closeToTray": {
       "title": "Sluiten naar systeemvak",
       "description": "Sluit het programma naar het systeemvak in plaats van af te sluiten."
+    },
+    "loggingEnabled": {
+      "title": "Logboek",
+      "description": "Schrijft diagnostische logs naar een map 'logs' naast de toepassing. Handig bij het oplossen van problemen; zet uit als je klaar bent."
     }
   },
   "tray": {

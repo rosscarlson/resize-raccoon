@@ -7,6 +7,7 @@ interface Settings {
     startMinimized: boolean;
     closeToTray: boolean;
     language: string;
+    loggingEnabled: boolean;
 }
 
 export default Settings;

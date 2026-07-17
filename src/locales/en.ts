@@ -67,7 +67,7 @@ const en = {
             "clear": "Clear shortcut",
         },
         "buttons": {
-            "test": "Test profile",
+            "test": "Test | Apply",
             "cancel": "Cancel",
             "save": "Save",
             "delete": "Delete",
@@ -108,6 +108,10 @@ const en = {
         "closeToTray": {
             "title": "Close to tray",
             "description": "Close the program to the system tray instead of exiting.",
+        },
+        "loggingEnabled": {
+            "title": "Logging",
+            "description": "Write diagnostic logs to a 'logs' folder next to the application. Useful when troubleshooting an issue — turn off when you're done.",
         }
     },
     "attribution": "Based on {{name}} by {{author}}",

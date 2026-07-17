@@ -82,11 +82,40 @@ pub fn get_process_list(show_all: bool) -> Vec<ProcessInfo> {
         .collect()
 }
 
-pub fn get_pid_from_profile(profile: &Profile) -> Option<u32> {
-    get_process_list(false)
-        .iter()
-        .find(|p| p.name.to_lowercase() == profile.process_name.to_lowercase())
+/// Returns *every* running PID matching the profile's process name, not just one.
+///
+/// Some games run more than one process sharing the exact same executable name (a
+/// launcher/parent alongside the real game process, or an anti-cheat relaunch) —
+/// only one of which actually owns a visible top-level window. Picking a single
+/// match (the old behavior) could silently pick the wrong one and then fail to
+/// find any window at all, even though the process name genuinely matched and the
+/// game was genuinely running with a visible, draggable window under a sibling
+/// PID. Matching against *all* processes here (not just ones with a
+/// currently-enumerable window) is also deliberate: the actual "does it have a
+/// visible window" check happens later, once a PID is known, in
+/// window_manager's own EnumWindows pass — this just needs to find candidates.
+pub fn get_pids_from_profile(profile: &Profile) -> Vec<u32> {
+    let target = profile.process_name.to_lowercase();
+    let matched: Vec<u32> = get_process_list(true)
+        .into_iter()
+        .filter(|p| p.name.to_lowercase() == target)
         .map(|p| p.pid as u32)
+        .collect();
+
+    if matched.is_empty() {
+        debug_log!(
+            "Could not resolve process '{}' to any running PID",
+            profile.process_name
+        );
+    } else {
+        debug_log!(
+            "Resolved process '{}' to PID(s): {:?}",
+            profile.process_name,
+            matched
+        );
+    }
+
+    matched
 }
 
 pub fn watcher(
@@ -164,12 +193,19 @@ pub fn watcher(
                     .spawn(move || {
                         std::thread::sleep(Duration::from_millis(profile_clone.delay as u64));
 
+                        // Deliberately not pinning `.pid(Some(process_pid))` here: that
+                        // PID came from a naive process-name match (this thread's own
+                        // `find()` above), same as what apply_profile's process-name path
+                        // does internally — but passing it explicitly skips
+                        // apply_profile's window-title fallback entirely (it only runs
+                        // when no PID is given), which is what actually makes Test/Apply
+                        // from the UI work for games like Forza Horizon 4 where the real
+                        // window is owned by a different PID than the named process.
+                        // Leaving `.pid()` unset lets apply_profile re-resolve fully,
+                        // fallback included, matching the UI's working behavior exactly.
                         let _ = window_manager::apply_profile(
                             &profile_clone,
-                            ApplyConfig::new()
-                                .pid(Some(process_pid))
-                                .retry(true)
-                                .monitor(true),
+                            ApplyConfig::new().retry(true).monitor(true),
                         );
                     })
                     .unwrap();

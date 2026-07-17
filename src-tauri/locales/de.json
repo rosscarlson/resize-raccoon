@@ -67,7 +67,7 @@
       "clear": "Tastenkombination löschen"
     },
     "buttons": {
-      "test": "Profil testen",
+      "test": "Testen | Anwenden",
       "cancel": "Abbrechen",
       "save": "Speichern",
       "delete": "Löschen"
@@ -106,6 +106,10 @@
     "closeToTray": {
       "title": "In den Tray schließen",
       "description": "Schließt das Programm in den System-Tray, anstatt es zu beenden."
+    },
+    "loggingEnabled": {
+      "title": "Protokollierung",
+      "description": "Schreibt Diagnoseprotokolle in einen Ordner 'logs' neben der Anwendung. Nützlich zur Fehlerbehebung — danach wieder deaktivieren."
     }
   },
   "tray": {

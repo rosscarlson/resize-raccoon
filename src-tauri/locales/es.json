@@ -67,7 +67,7 @@
       "clear": "Borrar atajo"
     },
     "buttons": {
-      "test": "Probar perfil",
+      "test": "Probar | Aplicar",
       "cancel": "Cancelar",
       "save": "Guardar",
       "delete": "Eliminar"
@@ -106,6 +106,10 @@
     "closeToTray": {
       "title": "Cerrar a la bandeja",
       "description": "Cierra el programa a la bandeja del sistema en lugar de salir."
+    },
+    "loggingEnabled": {
+      "title": "Registro de depuración",
+      "description": "Escribe registros de diagnóstico en una carpeta 'logs' junto a la aplicación. Útil para solucionar problemas; desactívalo cuando termines."
     }
   },
   "tray": {

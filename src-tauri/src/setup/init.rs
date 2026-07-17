@@ -32,6 +32,28 @@ pub fn setup<R: Runtime>(builder: Builder<R>) -> Builder<R> {
             UserSettings::default()
         });
 
+        crate::logging::set_enabled(user_settings.logging_enabled, &app_handle);
+        debug_log!(
+            "Resize Rabbit v{} starting up (logging enabled: {})",
+            env!("CARGO_PKG_VERSION"),
+            user_settings.logging_enabled
+        );
+
+        // Proves which build is actually running regardless of the version
+        // number — settles "did the installer actually update anything" without
+        // guessing, since the version string alone can't distinguish between two
+        // installs of the same version.
+        if let Ok(exe_path) = std::env::current_exe() {
+            let modified = std::fs::metadata(&exe_path)
+                .and_then(|m| m.modified())
+                .map(|t| {
+                    let local: chrono::DateTime<chrono::Local> = t.into();
+                    local.format("%Y-%m-%d %H:%M:%S").to_string()
+                })
+                .unwrap_or_else(|_| "unknown".to_string());
+            debug_log!("Running exe: {} (last modified: {})", exe_path.display(), modified);
+        }
+
         if is_first_run {
             user_settings::apply_installer_launch_on_start_choice(&app_handle);
         }

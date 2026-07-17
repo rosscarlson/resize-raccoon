@@ -67,7 +67,7 @@
       "clear": "Effacer le raccourci"
     },
     "buttons": {
-      "test": "Tester le profil",
+      "test": "Tester | Appliquer",
       "cancel": "Annuler",
       "save": "Enregistrer",
       "delete": "Supprimer"
@@ -106,6 +106,10 @@
     "closeToTray": {
       "title": "Fermer dans la barre d'état système",
       "description": "Ferme le programme dans la barre d'état système au lieu de quitter."
+    },
+    "loggingEnabled": {
+      "title": "Journalisation",
+      "description": "Écrit des journaux de diagnostic dans un dossier 'logs' à côté de l'application. Utile pour le dépannage ; désactivez-le une fois terminé."
     }
   },
   "tray": {

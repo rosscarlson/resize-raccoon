@@ -11,11 +11,12 @@ use winapi::shared::minwindef::{BOOL, DWORD, FALSE, LPARAM, TRUE};
 use winapi::shared::windef::{HWND, RECT};
 use winapi::um::errhandlingapi::GetLastError;
 use winapi::um::winuser::{
-    EnumWindows, GetClassNameW, GetWindowLongPtrW, GetWindowLongW, GetWindowRect,
-    GetWindowThreadProcessId, MoveWindow, SetWindowLongPtrW, SetWindowPos, GWL_EXSTYLE, GWL_STYLE,
-    SWP_FRAMECHANGED, SWP_NOACTIVATE, SWP_NOMOVE, SWP_NOOWNERZORDER, SWP_NOSENDCHANGING,
-    SWP_NOSIZE, SWP_NOZORDER, WS_BORDER, WS_DLGFRAME, WS_EX_CLIENTEDGE, WS_EX_DLGMODALFRAME,
-    WS_EX_STATICEDGE, WS_EX_WINDOWEDGE, WS_THICKFRAME, WS_VISIBLE,
+    EnumChildWindows, EnumWindows, GetClassNameW, GetWindowLongPtrW, GetWindowLongW, GetWindowRect,
+    GetWindowTextW, GetWindowThreadProcessId, MoveWindow, SetWindowLongPtrW, SetWindowPos,
+    ShowWindow, GWL_EXSTYLE, GWL_STYLE, SWP_FRAMECHANGED, SWP_NOACTIVATE, SWP_NOMOVE,
+    SWP_NOOWNERZORDER, SWP_NOSENDCHANGING, SWP_NOSIZE, SWP_NOZORDER, SW_HIDE, WS_BORDER,
+    WS_DLGFRAME, WS_EX_CLIENTEDGE, WS_EX_DLGMODALFRAME, WS_EX_STATICEDGE, WS_EX_WINDOWEDGE,
+    WS_THICKFRAME, WS_VISIBLE,
 };
 
 thread_local! {
@@ -80,12 +81,10 @@ fn validate_window_rect(hwnd: HWND, profile: &Profile) -> bool {
     let intended_width = profile.window_width;
     let intended_height = profile.window_height;
 
-    let was_correctly_moved: bool = actual_x == intended_x
+    actual_x == intended_x
         && actual_y == intended_y
         && actual_width == intended_width
-        && actual_height == intended_height;
-
-    was_correctly_moved
+        && actual_height == intended_height
 }
 
 fn remove_window_borders(hwnd: HWND, profile: &Profile) {
@@ -116,6 +115,64 @@ fn remove_window_borders(hwnd: HWND, profile: &Profile) {
         | SWP_NOSENDCHANGING
         | SWP_FRAMECHANGED;
     unsafe { SetWindowPos(hwnd, ptr::null_mut(), 0, 0, 0, 0, u_flags) };
+}
+
+fn window_class_name(hwnd: HWND) -> String {
+    let mut buf = [0u16; 256];
+    let len = unsafe { GetClassNameW(hwnd, buf.as_mut_ptr(), buf.len() as i32) };
+    if len <= 0 {
+        return String::new();
+    }
+    String::from_utf16_lossy(&buf[..len as usize])
+}
+
+extern "system" fn hide_titlebar_child_callback(hwnd: HWND, lparam: LPARAM) -> BOOL {
+    let pid = lparam as DWORD;
+    let class = window_class_name(hwnd);
+
+    if class != "ApplicationFrameTitleBarWindow" {
+        return TRUE;
+    }
+
+    let hidden = unsafe { ShowWindow(hwnd, SW_HIDE) };
+    debug_log!(
+        "PID {}: hid ApplicationFrameTitleBarWindow child (was previously visible: {})",
+        pid,
+        hidden != 0
+    );
+
+    TRUE
+}
+
+/// UWP-hosted windows (class "ApplicationFrameWindow" — confirmed for Forza
+/// Horizon 4) draw their title bar / back-button strip using a genuinely
+/// separate child window, class "ApplicationFrameTitleBarWindow" — confirmed via
+/// a child-window dump Ross pasted back (rect (-2560, 1, 7680, 33), sitting right
+/// above the game's own "Windows.UI.Core.CoreWindow" child at (-2560, 33, 7680,
+/// 1440)). Not classic non-client caption (WS_CAPTION removal, in
+/// `remove_window_borders` above, has no effect on it) and not DWM-drawn frame
+/// chrome either (DWMWA_NCRENDERING_POLICY=DISABLED, tried first, returned
+/// success but changed nothing visible) — it's an ordinary sibling HWND.
+///
+/// Fix: hide that specific child outright via `ShowWindow(..., SW_HIDE)`. This
+/// never touches the CoreWindow (the game's actual rendering surface) at all —
+/// no resize, no reposition, nothing the game itself has to renegotiate — so it
+/// can't cause the performance regression the earlier CoreWindow-resize attempt
+/// did. Gated on the frame's class being exactly "ApplicationFrameWindow", so
+/// this never runs at all for classic Win32 games (Elite Dangerous, Forza 5/6,
+/// etc) — confirmed nothing here can affect them.
+fn hide_uwp_titlebar(hwnd: HWND, pid: DWORD) {
+    if window_class_name(hwnd) != "ApplicationFrameWindow" {
+        return;
+    }
+
+    unsafe {
+        EnumChildWindows(
+            hwnd,
+            Some(hide_titlebar_child_callback),
+            pid as LPARAM,
+        );
+    }
 }
 
 fn move_and_validate_window(
@@ -160,6 +217,10 @@ fn move_and_validate_window(
             pid
         );
         return Err(WindowManagerError::ApplyFailed);
+    }
+
+    if profile.remove_borders {
+        hide_uwp_titlebar(hwnd, pid);
     }
 
     Ok(())
@@ -232,6 +293,93 @@ fn watch_for_profile_overrides(hwnd: HWND, profile: &Profile, pid: DWORD) {
             }
         })
         .unwrap();
+}
+
+extern "system" fn dump_visible_windows_callback(hwnd: HWND, _lparam: LPARAM) -> BOOL {
+    let style = unsafe { GetWindowLongW(hwnd, GWL_STYLE) as u32 };
+    if style & WS_VISIBLE == 0 {
+        return TRUE;
+    }
+
+    let mut title_buf = [0u16; 256];
+    let len = unsafe { GetWindowTextW(hwnd, title_buf.as_mut_ptr(), title_buf.len() as i32) };
+    if len <= 0 {
+        return TRUE; // skip untitled windows, mostly background/helper noise
+    }
+    let title = String::from_utf16_lossy(&title_buf[..len as usize]);
+
+    let mut pid: DWORD = 0;
+    unsafe { GetWindowThreadProcessId(hwnd, &mut pid) };
+
+    debug_log!("  window: PID {} — \"{}\"", pid, title);
+
+    TRUE
+}
+
+/// Diagnostic dump of every visible, titled top-level window and its owning PID —
+/// logged once we've exhausted every candidate PID for a profile with no luck, so
+/// a pasted-back log shows what Windows itself thinks owns the game's window,
+/// which may not match the PID a profile resolved to by process name.
+fn log_visible_windows() {
+    debug_log!("Currently visible top-level windows with a title:");
+    unsafe {
+        EnumWindows(Some(dump_visible_windows_callback), 0);
+    }
+}
+
+extern "system" fn find_window_by_title_callback(hwnd: HWND, lparam: LPARAM) -> BOOL {
+    let (needle_ptr, mut result_ptr): (*const String, NonNull<Option<DWORD>>) =
+        unsafe { *(lparam as *const (*const String, NonNull<Option<DWORD>>)) };
+    let needle = unsafe { &*needle_ptr };
+
+    let style = unsafe { GetWindowLongW(hwnd, GWL_STYLE) as u32 };
+    if style & WS_VISIBLE == 0 {
+        return TRUE;
+    }
+
+    let mut title_buf = [0u16; 256];
+    let len = unsafe { GetWindowTextW(hwnd, title_buf.as_mut_ptr(), title_buf.len() as i32) };
+    if len <= 0 {
+        return TRUE;
+    }
+    let title = String::from_utf16_lossy(&title_buf[..len as usize]);
+
+    if !title.to_lowercase().contains(&needle.to_lowercase()) {
+        return TRUE;
+    }
+
+    let mut pid: DWORD = 0;
+    unsafe { GetWindowThreadProcessId(hwnd, &mut pid) };
+    unsafe { *result_ptr.as_mut() = Some(pid) };
+
+    FALSE // found it, stop enumerating
+}
+
+/// Some games (Forza Horizon 4 confirmed, via a pasted-back log) run their visible
+/// window under a PID that belongs to a *different* executable name than the one
+/// a profile is configured with — process-name matching can never find it. As a
+/// last resort, look for any visible top-level window whose title contains the
+/// profile's display name (which commonly matches the game's real window title,
+/// e.g. a profile named "Forza Horizon 4" and a window titled "Forza Horizon 4")
+/// and use whatever PID actually owns that window instead.
+fn find_pid_by_window_title(name: &str) -> Option<DWORD> {
+    if name.trim().is_empty() {
+        return None;
+    }
+
+    let mut result: Option<DWORD> = None;
+    let result_ptr = NonNull::new(&mut result).unwrap();
+    let needle = name.to_string();
+    let callback_data = (&needle as *const String, result_ptr);
+
+    unsafe {
+        EnumWindows(
+            Some(find_window_by_title_callback),
+            &callback_data as *const _ as LPARAM,
+        );
+    }
+
+    result
 }
 
 extern "system" fn enum_windows_callback(hwnd: HWND, lparam: LPARAM) -> BOOL {
@@ -320,30 +468,22 @@ impl ApplyConfig {
     }
 }
 
-pub fn apply_profile(profile: &Profile, config: ApplyConfig) -> Result<(), WindowManagerError> {
-    let pid = config
-        .pid
-        .unwrap_or_else(|| crate::process::get_pid_from_profile(profile).unwrap_or(0));
-
-    debug_log!("Profile config {:#?}", config);
-
-    if pid == 0 {
-        return Err(WindowManagerError::ProcessNotFound);
-    }
-
-    let mut success = false; // Here is our success variable
+/// Runs one EnumWindows pass looking for a visible top-level window owned by `pid`.
+/// `Ok(())` — found it and successfully moved/resized it.
+/// `Err(Some(e))` — found a matching window but failed to apply the profile to it.
+/// `Err(None)` — no matching window for this PID at all (caller should try the next candidate, if any).
+fn apply_to_pid(
+    profile: &Profile,
+    pid: DWORD,
+    monitor: bool,
+) -> Result<(), Option<WindowManagerError>> {
+    let mut success = false;
     let success_ptr = NonNull::new(&mut success).unwrap();
 
     let mut error = None;
     let error_ptr = NonNull::new(&mut error).unwrap();
 
-    let callback_data = (
-        pid,
-        profile as *const _,
-        success_ptr,
-        error_ptr,
-        config.monitor,
-    );
+    let callback_data = (pid, profile as *const _, success_ptr, error_ptr, monitor);
 
     unsafe {
         EnumWindows(
@@ -353,31 +493,135 @@ pub fn apply_profile(profile: &Profile, config: ApplyConfig) -> Result<(), Windo
     }
 
     if success {
-        debug_log!("Successfully applied profile: {}", profile.name);
         Ok(())
-    } else if let Some(error) = error {
-        Err(error)
     } else {
-        if config.retry && config.retries < 2 {
-            debug_log!(
-                "[{}] Faild to find active window, retrying in 5 seconds...",
-                profile.name
-            );
-            thread::sleep(Duration::from_secs(5));
+        Err(error)
+    }
+}
 
-            let retry_config = ApplyConfig::new()
-                .pid(Some(pid))
-                .retry(true)
-                .monitor(config.monitor)
-                .retries(config.retries + 1);
+pub fn apply_profile(profile: &Profile, config: ApplyConfig) -> Result<(), WindowManagerError> {
+    // A process name can match more than one running PID (a launcher/parent process
+    // alongside the real game process sharing the same exe name is common) — only
+    // one of which may actually own a visible window. Try every candidate rather
+    // than betting on whichever one sysinfo happened to resolve first.
+    let candidate_pids: Vec<DWORD> = match config.pid {
+        Some(pid) => vec![pid],
+        None => crate::process::get_pids_from_profile(profile),
+    };
 
-            return apply_profile(profile, retry_config);
-        } else {
-            debug_log!(
-                "[{}] Failed to find active window after 3 attempts.",
-                profile.name
-            );
-            Err(WindowManagerError::ApplyFailed)
+    debug_log!("Profile config {:#?}", config);
+
+    if candidate_pids.len() > 1 {
+        debug_log!(
+            "[{}] '{}' matched {} running processes ({:?}) — trying each until one has a window.",
+            profile.name,
+            profile.process_name,
+            candidate_pids.len(),
+            candidate_pids
+        );
+    }
+
+    for pid in &candidate_pids {
+        match apply_to_pid(profile, *pid, config.monitor) {
+            Ok(()) => {
+                debug_log!(
+                    "Successfully applied profile: {} (PID {})",
+                    profile.name,
+                    pid
+                );
+                return Ok(());
+            }
+            Err(Some(error)) => {
+                debug_log!(
+                    "[{}] Found a window for PID {} but failed to apply: {:?}",
+                    profile.name,
+                    pid,
+                    error
+                );
+                return Err(error);
+            }
+            Err(None) => {
+                debug_log!(
+                    "[{}] PID {} has no matching window, trying next candidate if any.",
+                    profile.name,
+                    pid
+                );
+            }
         }
     }
+
+    // Some games run their visible window under a PID belonging to a different
+    // executable than the one the profile is configured with (confirmed for Forza
+    // Horizon 4) — process-name matching can never find it. Last resort: look for
+    // any visible window whose title matches the profile's display name instead.
+    if config.pid.is_none() {
+        if let Some(pid) = find_pid_by_window_title(&profile.name) {
+            debug_log!(
+                "[{}] No window found via process name; found a window titled like '{}' owned by PID {} instead, trying that.",
+                profile.name,
+                profile.name,
+                pid
+            );
+            match apply_to_pid(profile, pid, config.monitor) {
+                Ok(()) => {
+                    debug_log!(
+                        "Successfully applied profile: {} (PID {}, matched by window title)",
+                        profile.name,
+                        pid
+                    );
+                    return Ok(());
+                }
+                Err(Some(error)) => {
+                    debug_log!(
+                        "[{}] Found a window by title (PID {}) but failed to apply: {:?}",
+                        profile.name,
+                        pid,
+                        error
+                    );
+                    return Err(error);
+                }
+                Err(None) => {
+                    debug_log!(
+                        "[{}] Window-title fallback PID {} unexpectedly had no matching window on second pass.",
+                        profile.name,
+                        pid
+                    );
+                }
+            }
+        }
+    }
+
+    if candidate_pids.is_empty() {
+        debug_log!(
+            "[{}] No running process found matching '{}', and no window titled like '{}' either; cannot apply.",
+            profile.name,
+            profile.process_name,
+            profile.name
+        );
+        return Err(WindowManagerError::ProcessNotFound);
+    }
+
+    if config.retry && config.retries < 2 {
+        debug_log!(
+            "[{}] Failed to find active window, retrying in 5 seconds...",
+            profile.name
+        );
+        thread::sleep(Duration::from_secs(5));
+
+        let retry_config = ApplyConfig::new()
+            .pid(config.pid)
+            .retry(true)
+            .monitor(config.monitor)
+            .retries(config.retries + 1);
+
+        return apply_profile(profile, retry_config);
+    }
+
+    debug_log!(
+        "[{}] Failed to find active window after {} attempt(s).",
+        profile.name,
+        config.retries + 1
+    );
+    log_visible_windows();
+    Err(WindowManagerError::ApplyFailed)
 }

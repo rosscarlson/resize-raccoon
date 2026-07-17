@@ -67,7 +67,7 @@
       "clear": "清除快捷键"
     },
     "buttons": {
-      "test": "测试配置文件",
+      "test": "测试 | 应用",
       "cancel": "取消",
       "save": "保存",
       "delete": "删除"
@@ -106,6 +106,10 @@
     "closeToTray": {
       "title": "关闭到托盘",
       "description": "关闭程序时将其最小化到系统托盘，而不是退出。"
+    },
+    "loggingEnabled": {
+      "title": "日志记录",
+      "description": "将诊断日志写入应用程序旁边的 'logs' 文件夹。用于排查问题；完成后请关闭。"
     }
   },
   "tray": {

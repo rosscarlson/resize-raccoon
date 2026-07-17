@@ -61,6 +61,10 @@ const SettingsMenu = () => {
         updateSettings({ closeToTray: e.target.checked });
     };
 
+    const handleLoggingToggle = (e: React.ChangeEvent<HTMLInputElement>) => {
+        updateSettings({ loggingEnabled: e.target.checked });
+    };
+
     const handleLanguageChange = async (e: React.ChangeEvent<HTMLSelectElement>) => {
         const lang = e.target.value;
         if (!i18n.hasResourceBundle(lang, 'translation')) {
@@ -163,6 +167,27 @@ const SettingsMenu = () => {
                     className="toggle toggle-accent toggle-md"
                     checked={getSettings().checkForUpdates}
                     onChange={handleCheckForUpdatesToggle}
+                />
+            </div>
+            <div className="divider mt-2 mb-1"></div>
+            <div className="form-control w-full">
+                <label className="label pb-1" htmlFor="logging_enabled">
+                    <span className="text-2xs uppercase font-semibold">
+                        {t('settings.loggingEnabled.title')}
+                    </span>
+                    <div
+                        className="tooltip before:w-[300px] before:-left-[10px] before:translate-x-0"
+                        data-tip={t('settings.loggingEnabled.description')}
+                    >
+                        <Info size=".8em" />
+                    </div>
+                </label>
+                <input
+                    id="logging_enabled"
+                    type="checkbox"
+                    className="toggle toggle-accent toggle-md"
+                    checked={getSettings().loggingEnabled}
+                    onChange={handleLoggingToggle}
                 />
             </div>
             <div className="divider mt-2 mb-1"></div>

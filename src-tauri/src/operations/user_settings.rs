@@ -19,6 +19,7 @@ pub struct UserSettings {
     pub start_minimized: bool,
     pub close_to_tray: bool,
     pub language: String,
+    pub logging_enabled: bool,
 }
 
 #[derive(Serialize)]
@@ -30,6 +31,7 @@ pub struct SerializeableUserSettings {
     pub start_minimized: bool,
     pub close_to_tray: bool,
     pub language: String,
+    pub logging_enabled: bool,
 }
 
 impl Default for UserSettings {
@@ -43,6 +45,7 @@ impl Default for UserSettings {
             start_minimized: false,
             close_to_tray: true,
             language: "en".to_string(),
+            logging_enabled: false,
         }
     }
 }
@@ -57,6 +60,7 @@ impl UserSettings {
             start_minimized: self.start_minimized,
             close_to_tray: self.close_to_tray,
             language: self.language.clone(),
+            logging_enabled: self.logging_enabled,
         }
     }
 }

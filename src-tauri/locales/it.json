@@ -67,7 +67,7 @@
       "clear": "Cancella scorciatoia"
     },
     "buttons": {
-      "test": "Testa profilo",
+      "test": "Prova | Applica",
       "cancel": "Annulla",
       "save": "Salva",
       "delete": "Elimina"
@@ -106,6 +106,10 @@
     "closeToTray": {
       "title": "Chiudi nella barra delle applicazioni",
       "description": "Chiude il programma nella barra delle applicazioni invece di uscire."
+    },
+    "loggingEnabled": {
+      "title": "Registrazione",
+      "description": "Scrive log diagnostici in una cartella 'logs' accanto all'applicazione. Utile per la risoluzione dei problemi; disattivalo al termine."
     }
   },
   "tray": {

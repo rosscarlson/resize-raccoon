@@ -27,6 +27,8 @@ pub fn settings_update<R: Runtime>(
         .poll_rate
         .store(settings.poll_rate, Ordering::SeqCst);
 
+    crate::logging::set_enabled(settings.logging_enabled, &app);
+
     user_settings::update_user_settings(settings, &app)?;
     tray::rebuild_tray_menu(&app);
     Ok(())

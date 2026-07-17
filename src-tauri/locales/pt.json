@@ -67,7 +67,7 @@
       "clear": "Limpar atalho"
     },
     "buttons": {
-      "test": "Testar perfil",
+      "test": "Testar | Aplicar",
       "cancel": "Cancelar",
       "save": "Salvar",
       "delete": "Excluir"
@@ -106,6 +106,10 @@
     "closeToTray": {
       "title": "Fechar para a bandeja",
       "description": "Fecha o programa para a bandeja do sistema em vez de sair."
+    },
+    "loggingEnabled": {
+      "title": "Registo de diagnóstico",
+      "description": "Grava registos de diagnóstico numa pasta 'logs' junto à aplicação. Útil para resolução de problemas; desative quando terminar."
     }
   },
   "tray": {
