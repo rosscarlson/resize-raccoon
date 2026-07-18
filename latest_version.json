@@ -1,11 +1,11 @@
 {
-  "version": "1.1.0",
-  "notes": "Fixes Forza Horizon 4 (Microsoft Store version) never resizing correctly. Adds an optional diagnostic Logging setting. Fixes the app window growing larger every restart, and fixes the installer sometimes not updating on reinstall. Renames 'Test profile' to 'Test | Apply'.",
-  "pub_date": "2026-07-17T02:04:08Z",
+  "version": "1.2.0",
+  "notes": "Adds an experimental 'Remove titlebar' toggle that hides the leftover title bar on Store/UWP games (e.g. Forza Horizon 4) by pushing it off the top of the screen, independent from 'Remove borders'. Save is now split into 'Save' and 'Save & Close'. Moves border/titlebar options above the shortcut field in the profile editor.",
+  "pub_date": "2026-07-18T22:58:59Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRaTA2bWpwbWlqM0VvbTROcHloSFJjS1JaV21vS0FxSlROeGMza0hSNWRaQXY2Y3o5d2VZWjBib2Fyb1dxZHJPUHJJN0krRmUzRW16ei95Qk90REp1ZmdjTDF1UnZrMkFjPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg0MjUzNzgyCWZpbGU6UmVzaXplIFJhYmJpdF8xLjEuMF94NjRfZW4tVVMubXNpLnppcApmUmdtYkM1ckNyeVUwYlN5T3NVWkJXSStoWXQ2S0xnWG5CM00wODhjZEFkQlo5QllrZVgzdnRYeUdvdHZrYlc5WUtMenV6OTRTQjhBTUFqUkNqWFNEZz09Cg==",
-      "url": "https://github.com/rosscarlson/resize-rabbit/releases/download/v1.1.0/Resize.Rabbit_1.1.0_x64_en-US.msi.zip"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRaTA2bWpwbWlqM0FSQS9mVWFSZjRJTENTMWtBR3BBM0Z0d2JtNU1DRkJicXZwdzg1SkZZd0hhZlA0cFBGd0ZDVkRqalpGQTR4bXl5a29pbUNBd01MakJxamkxV2ZjQVFBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg0NDE1NTM5CWZpbGU6UmVzaXplIFJhYmJpdF8xLjIuMF94NjRfZW4tVVMubXNpLnppcAowSjBPOWdpQkNBZG4vdlR3SnJzcytIVXdrRXZub2tlVDBqZWhPZzV5Uko5d1VoWEhrVG1Rb0ZpNkNGR1RLT1d0Ni8yd1pzeU43S0w0U1I3S1puRGVDUT09Cg==",
+      "url": "https://github.com/rosscarlson/resize-rabbit/releases/download/v1.2.0/Resize.Rabbit_1.2.0_x64_en-US.msi.zip"
     }
   }
 }
